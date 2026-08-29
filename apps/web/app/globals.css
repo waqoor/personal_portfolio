@@ -1,0 +1,222 @@
+@import "tailwindcss";
+@import "@portfolio/ui/styles.css";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@source "../**/*.{ts,tsx}";
+@source "../../../packages/frontend/ui/src/**/*.{ts,tsx}";
+@source "../../../packages/frontend/motion/src/**/*.{ts,tsx}";
+
+@layer base {
+  body {
+    overflow-x: clip;
+  }
+
+  html {
+    scroll-padding-top: 6rem;
+  }
+
+  section[id] {
+    scroll-margin-top: 6rem;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+  }
+
+  p,
+  li {
+    text-wrap: pretty;
+  }
+}
+
+@layer components {
+  .site-shell {
+    width: min(calc(100% - (2 * clamp(1.25rem, 4vw, 4rem))), 92rem);
+    margin-inline: auto;
+  }
+
+  .site-shell-narrow {
+    width: min(calc(100% - (2 * clamp(1.25rem, 4vw, 4rem))), 74rem);
+    margin-inline: auto;
+  }
+
+  .section-space {
+    padding-block: clamp(5rem, 10vw, 10rem);
+  }
+
+  .display-xl {
+    overflow-wrap: anywhere;
+    font-family: var(--font-display), ui-serif, Georgia, serif;
+    font-size: clamp(3.6rem, 10vw, 9.5rem);
+    font-weight: 520;
+    letter-spacing: -0.072em;
+    line-height: 0.82;
+  }
+
+  .display-lg {
+    overflow-wrap: anywhere;
+    font-family: var(--font-display), ui-serif, Georgia, serif;
+    font-size: clamp(2.9rem, 7vw, 6.75rem);
+    font-weight: 520;
+    letter-spacing: -0.062em;
+    line-height: 0.9;
+  }
+
+  .display-md {
+    overflow-wrap: anywhere;
+    font-family: var(--font-display), ui-serif, Georgia, serif;
+    font-size: clamp(2.25rem, 4.8vw, 4.5rem);
+    font-weight: 540;
+    letter-spacing: -0.052em;
+    line-height: 0.96;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-family: var(--font-mono), ui-monospace, monospace;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .eyebrow::before {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 999px;
+    background: var(--primary);
+    box-shadow: 0 0 0 0.28rem color-mix(in oklab, var(--primary) 16%, transparent);
+    content: "";
+  }
+
+  .coordinate-grid {
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-position: center;
+    background-size: clamp(3rem, 6vw, 5.5rem) clamp(3rem, 6vw, 5.5rem);
+  }
+
+  .grain-overlay {
+    position: fixed;
+    z-index: 100;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
+    mix-blend-mode: multiply;
+  }
+
+  .dark .grain-overlay {
+    opacity: 0.055;
+    mix-blend-mode: soft-light;
+  }
+
+  .signal-rule {
+    position: relative;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .signal-rule::after {
+    position: absolute;
+    top: -1px;
+    left: 0;
+    width: clamp(3rem, 14vw, 11rem);
+    height: 3px;
+    background: var(--primary);
+    content: "";
+  }
+
+  .webgl-static-fallback {
+    background:
+      radial-gradient(circle at 50% 50%, color-mix(in oklab, var(--primary) 25%, transparent) 0 2px, transparent 3px),
+      radial-gradient(circle at 50% 50%, transparent 0 24%, color-mix(in oklab, var(--primary) 25%, transparent) 24.2% 24.5%, transparent 24.8%),
+      radial-gradient(circle at 50% 50%, transparent 0 42%, color-mix(in oklab, var(--primary) 16%, transparent) 42.2% 42.5%, transparent 42.8%);
+  }
+
+  .prose-portfolio {
+    color: var(--foreground);
+    font-size: clamp(1.05rem, 1.3vw, 1.2rem);
+    line-height: 1.82;
+  }
+
+  .prose-portfolio > * + * {
+    margin-top: 1.45em;
+  }
+
+  .prose-portfolio h2,
+  .prose-portfolio h3 {
+    margin-top: 2em;
+    font-family: var(--font-display), ui-serif, serif;
+    line-height: 1;
+    letter-spacing: -0.045em;
+  }
+
+  .prose-portfolio h2 {
+    font-size: clamp(2.1rem, 4vw, 3.5rem);
+  }
+
+  .prose-portfolio h3 {
+    font-size: clamp(1.65rem, 3vw, 2.4rem);
+  }
+
+  .prose-portfolio a {
+    text-decoration: underline;
+    text-decoration-color: var(--primary);
+    text-decoration-thickness: 0.12em;
+  }
+}
+
+@keyframes ui-enter {
+  from { opacity: 0; transform: translateY(0.35rem) scale(0.985); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes ui-exit {
+  from { opacity: 1; transform: translateY(0) scale(1); }
+  to { opacity: 0; transform: translateY(0.25rem) scale(0.985); }
+}
+
+@keyframes signal-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(-50% - 0.5rem)); }
+}
+
+.animate-signal-marquee {
+  animation: signal-marquee 28s linear infinite;
+}
+
+.animate-signal-marquee:hover {
+  animation-play-state: paused;
+}
+
+.animate-in[data-state="open"],
+[data-state="open"] .animate-in {
+  animation: ui-enter 240ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-out[data-state="closed"],
+[data-state="closed"] .animate-out {
+  animation: ui-exit 160ms ease-in;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .grain-overlay {
+    display: none;
+  }
+}
+
+@media (forced-colors: active) {
+  .eyebrow::before,
+  .signal-rule::after {
+    background: CanvasText;
+  }
+}

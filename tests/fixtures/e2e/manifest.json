@@ -1,0 +1,245 @@
+{
+  "schema_version": 1,
+  "source": "curated",
+  "identity": {
+    "profiles": [
+      {
+        "seed_key": "e2e.profile.main",
+        "payload": {
+          "full_name": "Integration Test Portfolio",
+          "headline": "Canonical production-service verification",
+          "short_bio": "Fictional content used only to verify the repository's production paths end to end.",
+          "long_bio": "This profile is intentionally synthetic. It proves publication, discovery, administration, and rendering behavior without making claims about a real person.",
+          "public_location": "Test environment",
+          "availability_status": "selective",
+          "availability_detail": "Test inquiries are accepted for automated verification.",
+          "primary_cta_label": "Review verification project",
+          "primary_cta_url": "https://example.com/verification",
+          "is_primary": true,
+          "status": "published"
+        }
+      }
+    ],
+    "social_links": [
+      {
+        "seed_key": "e2e.social.reference",
+        "profile_seed_key": "e2e.profile.main",
+        "payload": {
+          "platform": "Reference",
+          "label": "Unverified test reference",
+          "url": "https://example.com/integration-test-portfolio",
+          "sort_order": 1,
+          "is_visible": true
+        }
+      }
+    ],
+    "resume_versions": [
+      {
+        "seed_key": "e2e.resume.v1",
+        "profile_seed_key": "e2e.profile.main",
+        "file": "resume.pdf",
+        "version_label": "Synthetic verification v1",
+        "download_name": "integration-test-resume.pdf",
+        "effective_date": "2026-08-27",
+        "status": "published",
+        "make_current": true
+      }
+    ]
+  },
+  "portfolio": {
+    "categories": [
+      {
+        "seed_key": "e2e.category.platform",
+        "payload": {
+          "name": "Platform Engineering",
+          "slug": "platform-engineering",
+          "description": "Synthetic examples of typed, observable service integration.",
+          "color": "#315b65",
+          "sort_order": 1,
+          "status": "published"
+        }
+      }
+    ],
+    "sectors": [
+      {
+        "seed_key": "e2e.sector.verification",
+        "payload": {
+          "name": "Verification Systems",
+          "slug": "verification-systems",
+          "description": "Fictional systems that demonstrate production verification behavior.",
+          "color": "#baf43c",
+          "sort_order": 1,
+          "status": "published"
+        }
+      }
+    ],
+    "skills": [
+      {
+        "seed_key": "e2e.skill.python",
+        "category_seed_key": "e2e.category.platform",
+        "payload": {
+          "name": "Python",
+          "slug": "python",
+          "description": "Typed backend service integration in the test fixture.",
+          "proficiency_label": "Verification fixture",
+          "sort_order": 1,
+          "status": "published"
+        }
+      },
+      {
+        "seed_key": "e2e.skill.typescript",
+        "category_seed_key": "e2e.category.platform",
+        "payload": {
+          "name": "TypeScript",
+          "slug": "typescript",
+          "description": "Strict frontend contract verification in the test fixture.",
+          "proficiency_label": "Verification fixture",
+          "sort_order": 2,
+          "status": "published"
+        }
+      }
+    ],
+    "projects": [
+      {
+        "seed_key": "e2e.project.canonical",
+        "category_seed_key": "e2e.category.platform",
+        "skill_seed_keys": ["e2e.skill.python", "e2e.skill.typescript"],
+        "sector_seed_keys": ["e2e.sector.verification"],
+        "payload": {
+          "title": "Canonical Service Verification",
+          "slug": "canonical-service-verification",
+          "summary": "A fictional case study that exercises one canonical API from persistence through browser rendering.",
+          "description": "The fixture verifies service composition, typed frontend mapping, discovery metadata, and operational controls.",
+          "role": "Integration fixture",
+          "start_date": "2026-08-01",
+          "problem": "Parallel test contracts can conceal production integration failures.",
+          "solution": "Run browser journeys against the same production containers and service contracts used at deployment.",
+          "architecture": "PostgreSQL feeds FastAPI domain services, Next.js consumes typed public contracts, and Caddy supplies the production edge.",
+          "features": ["Published-only retrieval", "Typed API mapping", "Production edge verification"],
+          "decisions": ["Use the canonical service routes", "Keep synthetic evidence visibly fictional"],
+          "tradeoffs": ["The E2E stack costs more startup time than a mock server"],
+          "challenges": ["Coordinate database, API, frontend, and edge readiness"],
+          "outcomes": ["A failed contract breaks the same journey that production uses"],
+          "repository_url": "https://example.com/canonical-service-verification",
+          "is_open_source": true,
+          "nature": "software",
+          "featured_rank": 1,
+          "seo_title": "Canonical Service Verification - Integration Fixture",
+          "seo_description": "Fictional end-to-end verification of the portfolio's canonical production services.",
+          "status": "published"
+        }
+      },
+      {
+        "seed_key": "e2e.project.private-draft",
+        "category_seed_key": "e2e.category.platform",
+        "payload": {
+          "title": "Private Draft Sentinel",
+          "slug": "private-draft-sentinel",
+          "summary": "This sentinel must never appear in public rendering, discovery, sitemap, or assistant retrieval.",
+          "status": "draft"
+        }
+      }
+    ],
+    "experiences": [
+      {
+        "seed_key": "e2e.experience.integration",
+        "skill_seed_keys": ["e2e.skill.python", "e2e.skill.typescript"],
+        "sector_seed_keys": ["e2e.sector.verification"],
+        "project_seed_keys": ["e2e.project.canonical"],
+        "payload": {
+          "organization": "Synthetic Verification Lab",
+          "role": "Integration Fixture",
+          "location": "Test environment",
+          "employment_type": "Automated verification",
+          "start_date": "2026-08-01",
+          "summary": "Fictional experience used to validate semantic relationships.",
+          "achievements": ["Connected the canonical persistence, API, rendering, and discovery paths."],
+          "sort_order": 1,
+          "status": "published"
+        }
+      }
+    ],
+    "education": [
+      {
+        "seed_key": "e2e.education.fixture",
+        "payload": {
+          "institution": "Synthetic Systems Institute",
+          "credential": "Integration Verification Fixture",
+          "field_of_study": "Production service contracts",
+          "start_date": "2026-08-01",
+          "summary": "Test-only content.",
+          "sort_order": 1,
+          "status": "published"
+        }
+      }
+    ],
+    "certifications": [
+      {
+        "seed_key": "e2e.cert.fixture",
+        "payload": {
+          "name": "Synthetic Readiness Check",
+          "issuer": "Verification Fixture",
+          "issued_on": "2026-08-27",
+          "description": "Not a real credential; test-only content.",
+          "sort_order": 1,
+          "status": "published"
+        }
+      }
+    ]
+  },
+  "content": {
+    "articles": [
+      {
+        "seed_key": "e2e.article.grounded",
+        "payload": {
+          "title": "Testing the Canonical Path",
+          "slug": "testing-the-canonical-path",
+          "excerpt": "Why production-facing browser checks should exercise the real service contracts.",
+          "body_markdown": "# Testing the canonical path\n\nThis fictional article exists only for automated verification. It confirms that published writing is rendered, indexed, and available to grounded retrieval.",
+          "topics": ["testing", "architecture"],
+          "reading_minutes": 2,
+          "status": "published"
+        }
+      },
+      {
+        "seed_key": "e2e.article.private-draft",
+        "payload": {
+          "title": "Private Article Sentinel",
+          "slug": "private-article-sentinel",
+          "excerpt": "This draft must remain private.",
+          "body_markdown": "Draft-only sentinel content.",
+          "topics": ["private"],
+          "status": "draft"
+        }
+      }
+    ],
+    "homepage_sections": [
+      { "seed_key": "e2e.section.hero", "payload": { "section_type": "hero", "position": 0, "variant": "portrait", "status": "published" } },
+      { "seed_key": "e2e.section.categories", "payload": { "section_type": "categories", "title": "What this fixture verifies", "position": 1, "variant": "cards", "status": "published" } },
+      { "seed_key": "e2e.section.work", "payload": { "section_type": "selected_work", "title": "Canonical verification work", "position": 2, "variant": "cinematic", "feature_key": "projects", "status": "published" } },
+      { "seed_key": "e2e.section.sectors", "payload": { "section_type": "sectors", "position": 3, "variant": "cards", "status": "published" } },
+      { "seed_key": "e2e.section.skills", "payload": { "section_type": "skills", "position": 4, "variant": "universe", "status": "published" } },
+      { "seed_key": "e2e.section.experience", "payload": { "section_type": "experience", "position": 5, "variant": "timeline", "status": "published" } },
+      { "seed_key": "e2e.section.writing", "payload": { "section_type": "writing", "position": 6, "variant": "cards", "status": "published" } },
+      { "seed_key": "e2e.section.contact", "payload": { "section_type": "contact", "position": 7, "variant": "default", "feature_key": "contact", "status": "published" } }
+    ],
+    "navigation": [
+      { "seed_key": "e2e.nav.work", "payload": { "label": "Work", "href": "/projects", "sort_order": 1, "status": "published" } },
+      { "seed_key": "e2e.nav.about", "payload": { "label": "About", "href": "/about", "sort_order": 2, "status": "published" } },
+      { "seed_key": "e2e.nav.sectors", "payload": { "label": "Sectors", "href": "/sectors", "sort_order": 3, "status": "published" } },
+      { "seed_key": "e2e.nav.writing", "payload": { "label": "Writing", "href": "/writing", "sort_order": 4, "status": "published" } },
+      { "seed_key": "e2e.nav.contact", "payload": { "label": "Contact", "href": "/contact", "sort_order": 5, "status": "published" } }
+    ],
+    "features": [
+      { "seed_key": "e2e.feature.work", "payload": { "key": "projects", "enabled": true, "description": "Expose published work." } },
+      { "seed_key": "e2e.feature.sectors", "payload": { "key": "sectors", "enabled": true, "description": "Expose published sectors." } },
+      { "seed_key": "e2e.feature.skills", "payload": { "key": "skills", "enabled": true, "description": "Expose published skills." } },
+      { "seed_key": "e2e.feature.experience", "payload": { "key": "experience", "enabled": true, "description": "Expose published experience." } },
+      { "seed_key": "e2e.feature.articles", "payload": { "key": "articles", "enabled": true, "description": "Expose published writing." } },
+      { "seed_key": "e2e.feature.contact", "payload": { "key": "contact", "enabled": true, "description": "Accept test contact submissions." } },
+      { "seed_key": "e2e.feature.sponsorship", "payload": { "key": "sponsorship", "enabled": true, "description": "Only expose sponsorship when a published option exists." } },
+      { "seed_key": "e2e.feature.assistant", "payload": { "key": "assistant", "enabled": false, "description": "Remain disabled without a configured provider.", "configuration": { "greeting": "Ask about published fixture content.", "suggested_questions": ["What does the verification project prove?"], "disclaimer": "Answers use published sources only.", "max_question_length": 600 } } },
+      { "seed_key": "e2e.feature.site-settings", "payload": { "key": "site_settings", "enabled": true, "description": "Test-only frontend settings.", "configuration": { "site_name": "Integration Test Portfolio", "default_title": "Integration Test Portfolio", "default_description": "Fictional production-path verification content.", "locale": "en" } } }
+    ]
+  }
+}

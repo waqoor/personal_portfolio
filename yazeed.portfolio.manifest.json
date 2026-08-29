@@ -1,0 +1,502 @@
+{
+  "schema_version": 1,
+  "source": "curated",
+  "identity": {
+    "profiles": [
+      {
+        "seed_key": "yazeed.profile.primary",
+        "payload": {
+          "full_name": "Yazeed Hasan",
+          "headline": "End-to-End AI & Data Science Expert | AI/ML Engineering, Data Platforms, MLOps & Delivery Leadership",
+          "short_bio": "End-to-end AI and data science expert with 9+ years in technology, including 7+ years delivering production AI, machine-learning, analytics, and data-platform solutions.",
+          "long_bio": "I work across the full path from business problem framing to data engineering, modeling, generative and agentic AI, deployment, monitoring, governance, and continuous optimization.\n\nMy professional interests center on applied AI, product strategy, open-source technologies, and data-driven decision-making. I care about systems that are useful in practice, legible to the people operating them, and accountable to the outcomes they are meant to create.\n\nOutside work, my interests include travel, history, chess, walking, film, gaming, and exploration.",
+          "public_location": "Amman, Jordan",
+          "availability_status": "selective",
+          "availability_detail": "Open to focused conversations about AI, data platforms, product execution, technical leadership, and selective collaboration.",
+          "public_email": "yazeed.hasan.97@gmail.com",
+          "primary_cta_label": "Explore my projects",
+          "primary_cta_url": "/projects",
+          "secondary_cta_label": "Discuss sponsorship",
+          "secondary_cta_url": "/sponsor",
+          "is_primary": true,
+          "status": "published"
+        }
+      }
+    ],
+    "social_links": [
+      {
+        "seed_key": "yazeed.social.linkedin",
+        "profile_seed_key": "yazeed.profile.primary",
+        "payload": {
+          "platform": "LinkedIn",
+          "label": "LinkedIn",
+          "url": "https://www.linkedin.com/in/yazeed-hasan-ba02101b6",
+          "handle": "yazeed-hasan-ba02101b6",
+          "sort_order": 1,
+          "is_visible": true
+        }
+      },
+      {
+        "seed_key": "yazeed.social.github",
+        "profile_seed_key": "yazeed.profile.primary",
+        "payload": {
+          "platform": "GitHub",
+          "label": "GitHub",
+          "url": "https://github.com/yazeedhasan97",
+          "handle": "yazeedhasan97",
+          "sort_order": 2,
+          "is_visible": true
+        }
+      }
+    ],
+    "portraits": [
+      {
+        "seed_key": "yazeed.portrait.primary",
+        "profile_seed_key": "yazeed.profile.primary",
+        "file": "portfolio_image.png",
+        "media_type": "image/png",
+        "alt_text": "Yazeed Hasan smiling in a white shirt and dark vest",
+        "sort_order": 0,
+        "make_primary": true
+      }
+    ],
+    "resume_versions": [
+      {
+        "seed_key": "yazeed.resume.2026-08",
+        "profile_seed_key": "yazeed.profile.primary",
+        "file": "YazeedHasanResume.pdf",
+        "version_label": "Yazeed Hasan résumé — August 2026",
+        "effective_date": "2026-08-19",
+        "download_name": "Yazeed-Hasan-Resume.pdf",
+        "status": "published",
+        "make_current": true
+      }
+    ]
+  },
+  "portfolio": {
+    "categories": [
+      {
+        "seed_key": "yazeed.category.ai-ml",
+        "payload": {
+          "name": "AI & Machine Learning",
+          "slug": "ai-machine-learning",
+          "description": "Production AI, machine learning, generative AI, agentic systems, NLP, evaluation, and optimization.",
+          "color": "#baf43c",
+          "sort_order": 1,
+          "status": "published"
+        }
+      },
+      {
+        "seed_key": "yazeed.category.data-platforms",
+        "payload": {
+          "name": "Data Platforms",
+          "slug": "data-platforms",
+          "description": "Batch and streaming data engineering, distributed processing, analytics platforms, data quality, and lineage.",
+          "color": "#4f7cff",
+          "sort_order": 2,
+          "status": "published"
+        }
+      },
+      {
+        "seed_key": "yazeed.category.product-engineering",
+        "payload": {
+          "name": "Product Engineering",
+          "slug": "product-engineering",
+          "description": "API-first products, workflow automation, software architecture, and operated technical systems.",
+          "color": "#f3a95f",
+          "sort_order": 3,
+          "status": "published"
+        }
+      },
+      {
+        "seed_key": "yazeed.category.leadership",
+        "payload": {
+          "name": "Leadership & Delivery",
+          "slug": "leadership-delivery",
+          "description": "Technical leadership, project delivery, governance, stakeholder alignment, and production readiness.",
+          "color": "#9b8cff",
+          "sort_order": 4,
+          "status": "published"
+        }
+      }
+    ],
+    "sectors": [
+      { "seed_key": "yazeed.sector.telecom", "payload": { "name": "Telecommunications", "slug": "telecommunications", "description": "Telecom-scale data, analytics, customer intelligence, and operational platforms.", "sort_order": 1, "status": "published" } },
+      { "seed_key": "yazeed.sector.enterprise-ai", "payload": { "name": "Enterprise AI", "slug": "enterprise-ai", "description": "Governed AI, knowledge, analytics, and automation for enterprise workflows.", "sort_order": 2, "status": "published" } },
+      { "seed_key": "yazeed.sector.public-sector", "payload": { "name": "Public Sector", "slug": "public-sector", "description": "Data and AI systems supporting public services, policy, and operational decisions.", "sort_order": 3, "status": "published" } },
+      { "seed_key": "yazeed.sector.financial-services", "payload": { "name": "Financial Services", "slug": "financial-services", "description": "KYC, AML, governed screening, and risk-oriented data workflows.", "sort_order": 4, "status": "published" } },
+      { "seed_key": "yazeed.sector.education", "payload": { "name": "Education", "slug": "education", "description": "Technical education, workforce upskilling, curriculum design, and mentoring.", "sort_order": 5, "status": "published" } },
+      { "seed_key": "yazeed.sector.healthcare", "payload": { "name": "Healthcare", "slug": "healthcare", "description": "Healthcare data systems, medical NLP, field workflows, and public-health modeling.", "sort_order": 6, "status": "published" } },
+      { "seed_key": "yazeed.sector.workflow", "payload": { "name": "Workflow Automation", "slug": "workflow-automation", "description": "Conversation intelligence, accountable execution, integration, and operational automation.", "sort_order": 7, "status": "published" } }
+    ],
+    "skills": [
+      { "seed_key": "yazeed.skill.python", "category_seed_key": "yazeed.category.ai-ml", "payload": { "name": "Python", "slug": "python", "description": "Primary language for AI, data science, data engineering, APIs, and automation.", "proficiency_label": "Production delivery", "sort_order": 1, "status": "published" } },
+      { "seed_key": "yazeed.skill.ml", "category_seed_key": "yazeed.category.ai-ml", "payload": { "name": "Machine Learning", "slug": "machine-learning", "description": "Feature engineering, predictive modeling, classification, segmentation, forecasting, evaluation, and optimization.", "proficiency_label": "End-to-end", "sort_order": 2, "status": "published" } },
+      { "seed_key": "yazeed.skill.genai", "category_seed_key": "yazeed.category.ai-ml", "payload": { "name": "Generative AI & RAG", "slug": "generative-ai-rag", "description": "LLM applications, retrieval, vector search, grounding, context engineering, guardrails, and evaluation.", "proficiency_label": "Production delivery", "sort_order": 3, "status": "published" } },
+      { "seed_key": "yazeed.skill.agents", "category_seed_key": "yazeed.category.ai-ml", "payload": { "name": "Agentic Systems", "slug": "agentic-systems", "description": "Multi-agent orchestration, tool calling, memory, state, workflow execution, and operational traceability.", "proficiency_label": "Architecture & delivery", "sort_order": 4, "status": "published" } },
+      { "seed_key": "yazeed.skill.nlp", "category_seed_key": "yazeed.category.ai-ml", "payload": { "name": "NLP & Document Intelligence", "slug": "nlp-document-intelligence", "description": "Multilingual NLP, Text-to-SQL, SQL-to-Text, multimodal processing, OCR, and document intelligence.", "proficiency_label": "Applied systems", "sort_order": 5, "status": "published" } },
+      { "seed_key": "yazeed.skill.sql", "category_seed_key": "yazeed.category.data-platforms", "payload": { "name": "SQL & Analytics", "slug": "sql-analytics", "description": "Analytical modeling, semantic layers, marts, performance tuning, and governed data access.", "proficiency_label": "Production delivery", "sort_order": 6, "status": "published" } },
+      { "seed_key": "yazeed.skill.spark", "category_seed_key": "yazeed.category.data-platforms", "payload": { "name": "Spark & PySpark", "slug": "spark-pyspark", "description": "Distributed batch and streaming transformation, feature engineering, data quality, and optimization.", "proficiency_label": "Telecom scale", "sort_order": 7, "status": "published" } },
+      { "seed_key": "yazeed.skill.kafka", "category_seed_key": "yazeed.category.data-platforms", "payload": { "name": "Kafka & Streaming", "slug": "kafka-streaming", "description": "Event ingestion, consumer operations, near-real-time processing, monitoring, and downstream data products.", "proficiency_label": "Production operations", "sort_order": 8, "status": "published" } },
+      { "seed_key": "yazeed.skill.airflow", "category_seed_key": "yazeed.category.data-platforms", "payload": { "name": "Airflow & Data Orchestration", "slug": "airflow-data-orchestration", "description": "Repeatable pipeline execution, retraining, monitoring, alerting, and traceable workflows.", "proficiency_label": "Production delivery", "sort_order": 9, "status": "published" } },
+      { "seed_key": "yazeed.skill.gcp", "category_seed_key": "yazeed.category.data-platforms", "payload": { "name": "Google Cloud", "slug": "google-cloud", "description": "BigQuery, BigLake, Dataplex, Dataflow, Dataproc, Pub/Sub, Vertex AI, and Cloud Run.", "proficiency_label": "Professional certified", "sort_order": 10, "status": "published" } },
+      { "seed_key": "yazeed.skill.aws", "category_seed_key": "yazeed.category.data-platforms", "payload": { "name": "AWS", "slug": "aws", "description": "SageMaker, Redshift, QuickSight, and cloud-oriented data and ML delivery.", "proficiency_label": "Applied delivery", "sort_order": 11, "status": "published" } },
+      { "seed_key": "yazeed.skill.mlops", "category_seed_key": "yazeed.category.product-engineering", "payload": { "name": "MLOps & Platform Operations", "slug": "mlops-platform-operations", "description": "MLflow, Docker, Kubernetes, Terraform, CI/CD, monitoring, observability, and incident response.", "proficiency_label": "Production readiness", "sort_order": 12, "status": "published" } },
+      { "seed_key": "yazeed.skill.fastapi", "category_seed_key": "yazeed.category.product-engineering", "payload": { "name": "FastAPI & REST APIs", "slug": "fastapi-rest-apis", "description": "Typed service boundaries, integrations, webhooks, analytics APIs, and governed backend workflows.", "proficiency_label": "Production delivery", "sort_order": 13, "status": "published" } },
+      { "seed_key": "yazeed.skill.data-quality", "category_seed_key": "yazeed.category.data-platforms", "payload": { "name": "Data Quality & Governance", "slug": "data-quality-governance", "description": "Quality controls, lineage, auditability, privacy, IAM, RBAC, DLP, and compliance-oriented delivery.", "proficiency_label": "Architecture & governance", "sort_order": 14, "status": "published" } },
+      { "seed_key": "yazeed.skill.leadership", "category_seed_key": "yazeed.category.leadership", "payload": { "name": "Technical Leadership", "slug": "technical-leadership", "description": "Team leadership, architecture and code reviews, mentoring, resource prioritization, and delivery escalation.", "proficiency_label": "Team leadership", "sort_order": 15, "status": "published" } },
+      { "seed_key": "yazeed.skill.delivery", "category_seed_key": "yazeed.category.leadership", "payload": { "name": "Project & Portfolio Delivery", "slug": "project-portfolio-delivery", "description": "Roadmaps, scope, scheduling, risk, quality, stakeholder management, and value realization.", "proficiency_label": "PMP certified", "sort_order": 16, "status": "published" } }
+    ],
+    "projects": [
+      {
+        "seed_key": "yazeed.project.ligoflow",
+        "category_seed_key": "yazeed.category.product-engineering",
+        "skill_seed_keys": ["yazeed.skill.python", "yazeed.skill.genai", "yazeed.skill.agents", "yazeed.skill.fastapi", "yazeed.skill.data-quality", "yazeed.skill.leadership"],
+        "sector_seed_keys": ["yazeed.sector.enterprise-ai", "yazeed.sector.workflow"],
+        "payload": {
+          "title": "LigoFlow.ai",
+          "slug": "ligoflow-ai",
+          "summary": "An AI project-execution platform that turns fragmented workplace conversations into structured, accountable, and trackable execution.",
+          "description": "LigoFlow.ai connects conversation intelligence with project execution. It analyzes commitments, owners, deadlines, context, and priority, then supports routing, follow-up, escalation, audit, and project-health reporting across connected work systems.",
+          "role": "Owner and end-to-end product builder",
+          "start_date": "2025-09-01",
+          "problem": "Critical commitments and decisions are fragmented across communication and project-management systems, making ownership and follow-through difficult to maintain.",
+          "solution": "An API-first, webhook-driven platform that converts authorized conversation context into accountable work while preserving review, auditability, deployment flexibility, and data-sovereignty controls.",
+          "features": ["Commitment and owner detection", "Deadline and priority extraction", "Ticket creation and task routing", "Follow-ups, escalations, and SLA tracking", "Leadership project-health analytics", "Private-cloud and on-premises readiness"],
+          "decisions": ["Keep evidence and authorization explicit", "Separate proposal from protected execution", "Support configurable customer deployment boundaries"],
+          "live_url": "https://ligoflow.ai",
+          "nature": "product",
+          "featured_rank": 1,
+          "seo_title": "LigoFlow.ai — AI Project Execution Platform",
+          "seo_description": "AI project execution and conversation intelligence by Yazeed Hasan.",
+          "status": "published"
+        }
+      },
+      {
+        "seed_key": "yazeed.project.mentorax",
+        "category_seed_key": "yazeed.category.product-engineering",
+        "skill_seed_keys": ["yazeed.skill.python", "yazeed.skill.fastapi", "yazeed.skill.delivery"],
+        "sector_seed_keys": ["yazeed.sector.education"],
+        "payload": {
+          "title": "MentoraX.net",
+          "slug": "mentorax-net",
+          "summary": "An owned and publicly exposed Yazeed Hasan product; the reviewed product case study will expand as further details are supplied.",
+          "role": "Owner",
+          "live_url": "https://mentorax.net",
+          "nature": "product",
+          "featured_rank": 2,
+          "status": "published"
+        }
+      },
+      {
+        "seed_key": "yazeed.project.waqoor",
+        "category_seed_key": "yazeed.category.product-engineering",
+        "sector_seed_keys": ["yazeed.sector.enterprise-ai"],
+        "payload": {
+          "title": "Waqoor.com",
+          "slug": "waqoor-com",
+          "summary": "An owned and publicly exposed Yazeed Hasan project; detailed scope and evidence will be added after owner review.",
+          "role": "Owner",
+          "live_url": "https://waqoor.com",
+          "nature": "product",
+          "featured_rank": 3,
+          "status": "published"
+        }
+      },
+      {
+        "seed_key": "yazeed.project.mcplica",
+        "category_seed_key": "yazeed.category.product-engineering",
+        "skill_seed_keys": ["yazeed.skill.python", "yazeed.skill.fastapi", "yazeed.skill.mlops"],
+        "payload": {
+          "title": "MCPlica",
+          "slug": "mcplica",
+          "summary": "Open-source work owned by or contributed to by Yazeed Hasan; the repository link and reviewed contribution scope will be added when supplied.",
+          "role": "Owner / contributor",
+          "is_open_source": true,
+          "nature": "software",
+          "featured_rank": 4,
+          "status": "published"
+        }
+      },
+      {
+        "seed_key": "yazeed.project.portfolio",
+        "category_seed_key": "yazeed.category.product-engineering",
+        "skill_seed_keys": ["yazeed.skill.python", "yazeed.skill.fastapi", "yazeed.skill.sql", "yazeed.skill.mlops"],
+        "payload": {
+          "title": "Yazeed Hasan Portfolio",
+          "slug": "yazeed-hasan-portfolio",
+          "summary": "An open-source, admin-managed personal portfolio platform with canonical content, typed APIs, and production deployment validation.",
+          "description": "This portfolio is built as an operated platform rather than a static profile: PostgreSQL-backed content, FastAPI domain services, a typed frontend client, Next.js public and admin surfaces, managed media, publication controls, discovery output, contact workflows, and production containers.",
+          "role": "Owner and end-to-end builder",
+          "features": ["Private content administration", "Managed portrait and résumé versions", "Published-only public projections", "Project, work, achievement, and sponsorship workflows", "Production container and browser validation"],
+          "is_open_source": true,
+          "nature": "software",
+          "featured_rank": 5,
+          "status": "published"
+        }
+      },
+      {
+        "seed_key": "yazeed.project.raad",
+        "category_seed_key": "yazeed.category.product-engineering",
+        "payload": {
+          "title": "RAAD",
+          "slug": "raad",
+          "summary": "Open-source work owned by or contributed to by Yazeed Hasan; detailed scope and repository evidence will be added after review.",
+          "role": "Owner / contributor",
+          "is_open_source": true,
+          "nature": "software",
+          "status": "published"
+        }
+      }
+    ],
+    "experiences": [
+      {
+        "seed_key": "yazeed.experience.ligadata-lead",
+        "skill_seed_keys": ["yazeed.skill.leadership", "yazeed.skill.delivery", "yazeed.skill.genai", "yazeed.skill.agents", "yazeed.skill.data-quality", "yazeed.skill.mlops"],
+        "sector_seed_keys": ["yazeed.sector.telecom", "yazeed.sector.enterprise-ai"],
+        "payload": {
+          "organization": "LigaData Inc.",
+          "role": "Technical Team Lead — AI & Data Technical Leadership",
+          "location": "Hybrid",
+          "employment_type": "Primary · Full-time",
+          "start_date": "2024-02-01",
+          "summary": "Leads end-to-end enterprise AI, machine-learning, analytics, and data-platform delivery while managing and mentoring a seven-member cross-functional Data and AI engineering team.",
+          "achievements": ["Directed architectures spanning predictive models, LLM/RAG services, agentic workflows, analytics APIs, and batch and near-real-time data pipelines.", "Improved platform reliability by 25% and throughput by 20% through performance engineering, observability, data-quality controls, and incident management.", "Reduced deployment time by 40% through standardized CI/CD, configuration management, automated validation, and release governance.", "Leads the AI Agents Factory Platform, reusable enterprise-agent patterns, and telecom CLTV, churn, segmentation, and forecasting delivery.", "Owns architecture and code review, resource prioritization, delivery escalation, stakeholder reporting, governance, and technical coaching."],
+          "sort_order": 1,
+          "status": "published"
+        }
+      },
+      {
+        "seed_key": "yazeed.experience.google-contract",
+        "skill_seed_keys": ["yazeed.skill.gcp", "yazeed.skill.genai", "yazeed.skill.agents", "yazeed.skill.nlp", "yazeed.skill.sql", "yazeed.skill.mlops"],
+        "sector_seed_keys": ["yazeed.sector.enterprise-ai"],
+        "payload": {
+          "organization": "Alphabet / Google via Petra Pathway Consulting",
+          "role": "Senior AI Engineer",
+          "location": "Remote",
+          "employment_type": "Independent contract",
+          "start_date": "2025-10-01",
+          "end_date": "2026-06-01",
+          "summary": "Delivered secure end-to-end AI and data-science solutions on Google Cloud, from discovery and data foundations through modeling, deployment, monitoring, analytics, and stakeholder adoption.",
+          "achievements": ["Designed a governed multi-agent platform for enterprise knowledge workflows with orchestration, tool calling, memory, context compaction, and structured and unstructured data access.", "Built multimodal document-intelligence pipelines for PDF and PPTX extraction, OCR, parsing, indexing, grounded Q&A, and research synthesis.", "Developed Gemini-powered Text-to-SQL and SQL-to-Text capabilities with schema grounding, validation, safety guardrails, and governed BigQuery access.", "Delivered the CAP Hotline multi-agent CRM assistant and Audino analytics assistant as client engagement projects.", "Applied least-privilege IAM, VPC-SC, DLP, CMEK, lineage, secret management, CI/CD, evaluation, and model monitoring."],
+          "sort_order": 2,
+          "status": "published"
+        }
+      },
+      {
+        "seed_key": "yazeed.experience.stepbystep-lead",
+        "skill_seed_keys": ["yazeed.skill.leadership", "yazeed.skill.delivery", "yazeed.skill.python", "yazeed.skill.ml", "yazeed.skill.genai"],
+        "sector_seed_keys": ["yazeed.sector.education"],
+        "payload": {
+          "organization": "StepByStep Academy",
+          "role": "Lead Data & AI Instructor",
+          "location": "Hybrid",
+          "employment_type": "Part-time",
+          "start_date": "2019-07-01",
+          "summary": "Leads the design and delivery of advanced Data and AI programs spanning Python, SQL, APIs, data engineering, machine learning, deep learning, generative AI, RAG, MLOps, and applied analytics.",
+          "achievements": ["Built end-to-end learning paths connecting business framing, data preparation, modeling, deployment, monitoring, and AI-powered automation.", "Created project-based curricula with structured labs, capstones, assessments, and production-oriented use cases.", "Mentored learners through architecture decisions, experimentation, debugging, code review, deployment, and portfolio development.", "Coached instructors and governed curriculum quality, technical materials, delivery consistency, and enterprise-upskilling outcomes."],
+          "sort_order": 3,
+          "status": "published"
+        }
+      },
+      {
+        "seed_key": "yazeed.experience.ligadata-big-data",
+        "skill_seed_keys": ["yazeed.skill.python", "yazeed.skill.sql", "yazeed.skill.spark", "yazeed.skill.kafka", "yazeed.skill.fastapi", "yazeed.skill.data-quality"],
+        "sector_seed_keys": ["yazeed.sector.telecom"],
+        "payload": {
+          "organization": "LigaData Inc.",
+          "role": "Big Data Engineer",
+          "location": "Hybrid",
+          "employment_type": "Primary · Full-time",
+          "start_date": "2021-06-01",
+          "end_date": "2024-02-01",
+          "summary": "Architected telecom-scale data and feature pipelines across Hadoop, Kafka, Spark/PySpark, Trino/Presto, Redis, FastAPI, and PostgreSQL.",
+          "achievements": ["Built batch and near-real-time ETL/ELT workflows for analytics, reporting, ML training, and operational decision support.", "Developed classification, customer-segmentation, and GIS-based machine-learning models.", "Built the Big Data Quality Control Suite across four data layers, including profiling, validation, reconciliation, scoring, remediation, dashboards, and alerts.", "Designed and deployed the HDFS/DFS Retention Policy Executor with policy evaluation, audited execution, Docker, Kubernetes, and operational controls.", "Optimized SQL, Spark, Kafka, caching, and transformation logic across production workloads."],
+          "sort_order": 4,
+          "status": "published"
+        }
+      },
+      {
+        "seed_key": "yazeed.experience.world-bank",
+        "skill_seed_keys": ["yazeed.skill.python", "yazeed.skill.ml", "yazeed.skill.sql", "yazeed.skill.airflow", "yazeed.skill.fastapi"],
+        "sector_seed_keys": ["yazeed.sector.public-sector"],
+        "payload": {
+          "organization": "World Bank Group",
+          "role": "Data Scientist",
+          "location": "Remote",
+          "employment_type": "Independent contract",
+          "start_date": "2022-03-01",
+          "end_date": "2022-09-01",
+          "summary": "Built a national-scale unemployment analytics pipeline for Jordan by integrating social-security, tax, and civil-registry data.",
+          "achievements": ["Designed ingestion, cleaning, transformation, validation, reconciliation, exploratory analysis, and feature-engineering workflows.", "Applied survival analysis and classification to estimate employment-risk patterns for evidence-based labor-market interventions.", "Developed REST APIs for predictions, reporting, and operational decision support.", "Automated pipeline execution, retraining, monitoring, and alerting with Airflow while maintaining reproducibility and traceability.", "Published reproducible project code on GitHub."],
+          "sort_order": 5,
+          "status": "published"
+        }
+      },
+      {
+        "seed_key": "yazeed.experience.instructor-multiple",
+        "skill_seed_keys": ["yazeed.skill.python", "yazeed.skill.sql", "yazeed.skill.ml", "yazeed.skill.aws"],
+        "sector_seed_keys": ["yazeed.sector.education"],
+        "payload": {
+          "organization": "Multiple Organizations",
+          "role": "Data Science Instructor",
+          "location": "Hybrid",
+          "employment_type": "Part-time",
+          "start_date": "2019-07-01",
+          "end_date": "2022-09-01",
+          "summary": "Delivered applied data-science and machine-learning training for universities, academies, and professional providers.",
+          "achievements": ["Taught Python, R, SQL, statistics, AWS, Power BI, data visualization, and model evaluation.", "Designed hands-on workflows from data cleaning and exploration through modeling, interpretation, reporting, and deployment fundamentals.", "Created project-based materials, labs, assignments, and real-world datasets.", "Mentored students and early-career professionals through problem-solving, code review, debugging, and portfolio development."],
+          "sort_order": 6,
+          "status": "published"
+        }
+      },
+      {
+        "seed_key": "yazeed.experience.ligadata-operations",
+        "skill_seed_keys": ["yazeed.skill.python", "yazeed.skill.sql", "yazeed.skill.kafka", "yazeed.skill.data-quality"],
+        "sector_seed_keys": ["yazeed.sector.telecom"],
+        "payload": {
+          "organization": "LigaData Inc.",
+          "role": "Big Data Operations Engineer",
+          "location": "Hybrid",
+          "employment_type": "Primary · Full-time",
+          "start_date": "2020-01-01",
+          "end_date": "2021-06-01",
+          "summary": "Operated telecom-scale Hadoop, Kafka, scheduled-processing, and reporting environments supporting analytics, ML, and business intelligence.",
+          "achievements": ["Automated recurring data operations, validation, reconciliation, and monitoring with Python, SQL, and shell scripting, reducing manual workload by 60%.", "Monitored ingestion quality, consumer health, lag, execution, freshness, and model-data dependencies.", "Investigated anomalies, drops, delays, and inconsistencies through root-cause analysis, reconciliation, recovery, and preventive controls.", "Produced operational analytics, dashboards, alerts, and reports for service and business decisions."],
+          "sort_order": 7,
+          "status": "published"
+        }
+      },
+      {
+        "seed_key": "yazeed.experience.kaddb-ai",
+        "skill_seed_keys": ["yazeed.skill.python", "yazeed.skill.ml"],
+        "sector_seed_keys": ["yazeed.sector.public-sector"],
+        "payload": {
+          "organization": "KADDB",
+          "role": "AI Developer",
+          "location": "On-site",
+          "employment_type": "Project contract",
+          "start_date": "2019-01-01",
+          "end_date": "2019-04-01",
+          "summary": "Developed computer-vision models and deployment workflows for real-time object detection, recognition, and tracking.",
+          "achievements": ["Built data collection, labeling, preprocessing, model testing, evaluation, and deployment workflows.", "Deployed and optimized edge-AI inference on NVIDIA Jetson Nano and Raspberry Pi.", "Maintained structured model inputs, outputs, metadata, and operational records.", "Collaborated with technical stakeholders to validate requirements and adapt prototypes for deployment conditions."],
+          "sort_order": 8,
+          "status": "published"
+        }
+      },
+      {
+        "seed_key": "yazeed.experience.kaddb-vr",
+        "skill_seed_keys": ["yazeed.skill.ml"],
+        "sector_seed_keys": ["yazeed.sector.public-sector"],
+        "payload": {
+          "organization": "KADDB",
+          "role": "Games & Virtual Reality Developer Intern",
+          "location": "On-site",
+          "employment_type": "Concurrent internship assignment",
+          "start_date": "2019-01-01",
+          "end_date": "2019-04-01",
+          "summary": "Developed a Unity-based immersive training simulation integrating 3D environments, multimodal sensors, and event-driven interaction logic.",
+          "achievements": ["Integrated Emotiv Epoc+ EEG signals, OptiTrack motion tracking, and holographic-display components.", "Built C# components for signal processing, scene control, event handling, and experimental data flow.", "Supported calibration, testing, and iterative analysis of VR and sensor components."],
+          "sort_order": 9,
+          "status": "published"
+        }
+      },
+      {
+        "seed_key": "yazeed.experience.tuned-java",
+        "payload": {
+          "organization": "Tuned Application",
+          "role": "Trainee Java Developer",
+          "location": "On-site",
+          "employment_type": "Traineeship",
+          "start_date": "2016-11-01",
+          "end_date": "2017-02-01",
+          "summary": "Developed Java SE 8 and JavaFX desktop applications with object-oriented design, relational data, and responsive interfaces.",
+          "achievements": ["Implemented CRUD workflows, validation, file processing, database interaction, and multithreading.", "Supported testing, debugging, refactoring, version control, and documentation."],
+          "sort_order": 10,
+          "status": "published"
+        }
+      }
+    ],
+    "education": [
+      {
+        "seed_key": "yazeed.education.hashemite",
+        "payload": {
+          "institution": "The Hashemite University",
+          "credential": "Bachelor of Science",
+          "field_of_study": "Computer Information Systems",
+          "location": "Jordan",
+          "start_date": "2015-01-01",
+          "end_date": "2019-01-01",
+          "summary": "Graduated with a GPA of 3.43/4.00.",
+          "achievements": ["Ranked second in the graduating class in 2019.", "Recognized on the Top Students / Best Performers board in 2017 and 2018."],
+          "sort_order": 1,
+          "status": "published"
+        }
+      }
+    ],
+    "certifications": [
+      { "seed_key": "yazeed.cert.pmp", "payload": { "name": "Project Management Professional (PMP)", "issuer": "Project Management Institute (PMI)", "issued_on": "2026-01-01", "sort_order": 1, "status": "published" } },
+      { "seed_key": "yazeed.cert.international-trainer", "payload": { "name": "Certified International Trainer in Data Science and Artificial Intelligence", "issuer": "Board | Oxford College", "issued_on": "2024-01-01", "sort_order": 2, "status": "published" } },
+      { "seed_key": "yazeed.cert.gcp-ml", "payload": { "name": "Professional Machine Learning Engineer", "issuer": "Google Cloud", "issued_on": "2023-09-01", "sort_order": 3, "status": "published" } },
+      { "seed_key": "yazeed.cert.gcp-digital", "payload": { "name": "Cloud Digital Leader", "issuer": "Google Cloud", "issued_on": "2023-08-01", "sort_order": 4, "status": "published" } },
+      { "seed_key": "yazeed.cert.tensorflow", "payload": { "name": "TensorFlow Developer Certificate", "issuer": "TensorFlow Certificate Program", "issued_on": "2022-09-01", "sort_order": 5, "status": "published" } },
+      { "seed_key": "yazeed.cert.ielts", "payload": { "name": "IELTS", "issuer": "International English Language Testing System", "issued_on": "2021-03-01", "sort_order": 6, "status": "published" } },
+      { "seed_key": "yazeed.cert.pcap", "payload": { "name": "PCAP — Certified Associate in Python Programming", "issuer": "Python Institute", "issued_on": "2020-01-01", "sort_order": 7, "status": "published" } },
+      { "seed_key": "yazeed.cert.pcep", "payload": { "name": "PCEP — Certified Entry-Level Python Programmer", "issuer": "Python Institute", "issued_on": "2019-12-01", "sort_order": 8, "status": "published" } },
+      { "seed_key": "yazeed.cert.oracle-ocp", "payload": { "name": "Oracle Certified Professional, Java SE 8 Programmer", "issuer": "Oracle", "issued_on": "2017-07-01", "sort_order": 9, "status": "published" } },
+      { "seed_key": "yazeed.cert.oracle-oca", "payload": { "name": "Oracle Certified Associate, Java SE 8 Programmer", "issuer": "Oracle", "issued_on": "2017-02-01", "sort_order": 10, "status": "published" } },
+      { "seed_key": "yazeed.recognition.security", "payload": { "name": "Responsible Security Disclosure Recognition", "issuer": "Google client engagement", "issued_on": "2026-01-01", "description": "Recognition: Identified and responsibly reported security vulnerabilities that informed remediation and strengthened security controls.", "sort_order": 20, "status": "published" } },
+      { "seed_key": "yazeed.recognition.best-employee", "payload": { "name": "Two-Time Best Employee of the Year", "issuer": "LigaData Inc.", "issued_on": "2024-01-01", "description": "Recognition: Recognized in 2023 and 2024 for delivery excellence, technical ownership, and operational impact.", "sort_order": 21, "status": "published" } },
+      { "seed_key": "yazeed.recognition.iso", "payload": { "name": "ISO 21001:2018 Certification-Readiness Contribution", "issuer": "HTU", "issued_on": "2020-01-01", "description": "Recognition: Contributed to training-quality processes, delivery consistency, and accreditation readiness for a non-formal education upskilling program during 2019–2020.", "sort_order": 22, "status": "published" } },
+      { "seed_key": "yazeed.recognition.graduating-class", "payload": { "name": "Ranked Second in Graduating Class", "issuer": "The Hashemite University", "issued_on": "2019-01-01", "description": "Recognition: Ranked second in the graduating class.", "sort_order": 23, "status": "published" } },
+      { "seed_key": "yazeed.recognition.top-student", "payload": { "name": "Top Students / Best Performers Board Recognition", "issuer": "The Hashemite University", "issued_on": "2018-01-01", "description": "Recognition: Recognized twice for academic performance, in 2017 and 2018.", "sort_order": 24, "status": "published" } }
+    ]
+  },
+  "content": {
+    "articles": [
+      {
+        "seed_key": "yazeed.publication.eeg-icics-2020",
+        "payload": {
+          "title": "Towards a Direct Mental Based Decision Making: Electroencephalography (EEG) Case Study",
+          "slug": "eeg-direct-mental-decision-making",
+          "excerpt": "An IEEE ICICS 2020 paper and reproducible EEG/EMG brain-computer interface prototype for real-time decision mapping.",
+          "body_markdown": "# Towards a Direct Mental Based Decision Making\n\n**Conference:** 2020 11th International Conference on Information and Communication Systems (ICICS)  \n**Published:** April 2020  \n**DOI:** [10.1109/ICICS49469.2020.239502](https://doi.org/10.1109/ICICS49469.2020.239502)\n\nYazeed Hasan co-authored this paper after research and implementation completed from January through April 2019.\n\nThe work designed and implemented an AI-enabled brain-computer-interface Tetris prototype controlled through EEG and EMG signals. It covered signal capture, numerical feature extraction, model inference, real-time decision mapping, and integration of model outputs with game-control APIs.\n\nThe reproducible implementation was released through a GitHub code repository; the repository URL can be added here after it is reviewed and supplied.",
+          "topics": ["Publication", "EEG", "Brain-computer interface", "AI research"],
+          "reading_minutes": 2,
+          "seo_title": "EEG Decision Making Case Study — Yazeed Hasan",
+          "seo_description": "IEEE ICICS 2020 research co-authored by Yazeed Hasan on EEG-based direct mental decision making.",
+          "status": "published"
+        }
+      }
+    ],
+    "homepage_sections": [
+      { "seed_key": "yazeed.section.hero", "payload": { "section_type": "hero", "position": 0, "variant": "portrait", "animation_variant": "stagger", "status": "published" } },
+      { "seed_key": "yazeed.section.projects", "payload": { "section_type": "selected_work", "title": "Owned products and open work", "position": 1, "variant": "cinematic", "animation_variant": "reveal", "feature_key": "projects", "data_limit": 5, "status": "published" } },
+      { "seed_key": "yazeed.section.skills", "payload": { "section_type": "skills", "title": "Technical range", "position": 2, "variant": "universe", "animation_variant": "reveal", "feature_key": "skills", "status": "published" } },
+      { "seed_key": "yazeed.section.experience", "payload": { "section_type": "experience", "title": "Selected work history", "position": 3, "variant": "timeline", "animation_variant": "reveal", "feature_key": "experience", "data_limit": 3, "status": "published" } },
+      { "seed_key": "yazeed.section.certifications", "payload": { "section_type": "certifications", "title": "Credentials and recognition", "position": 4, "variant": "cards", "animation_variant": "reveal", "feature_key": "credentials", "data_limit": 6, "status": "published" } },
+      { "seed_key": "yazeed.section.social", "payload": { "section_type": "social_links", "title": "Find me online", "position": 5, "variant": "marquee", "animation_variant": "none", "status": "published" } },
+      { "seed_key": "yazeed.section.contact", "payload": { "section_type": "contact", "title": "Start a focused conversation", "position": 6, "variant": "default", "animation_variant": "reveal", "feature_key": "contact", "status": "published" } }
+    ],
+    "navigation": [
+      { "seed_key": "yazeed.nav.about", "payload": { "label": "About", "href": "/about", "sort_order": 0, "status": "published" } },
+      { "seed_key": "yazeed.nav.achievements", "payload": { "label": "Achievements", "href": "/achievements", "sort_order": 1, "status": "published" } },
+      { "seed_key": "yazeed.nav.work", "payload": { "label": "Work", "href": "/work", "sort_order": 2, "status": "published" } },
+      { "seed_key": "yazeed.nav.projects", "payload": { "label": "Projects", "href": "/projects", "sort_order": 3, "status": "published" } },
+      { "seed_key": "yazeed.nav.sponsor", "payload": { "label": "Sponsor", "href": "/sponsor", "sort_order": 4, "status": "published" } }
+    ],
+    "features": [
+      { "seed_key": "yazeed.feature.projects", "payload": { "key": "projects", "enabled": true, "description": "Expose owned and publicly reviewed projects." } },
+      { "seed_key": "yazeed.feature.sectors", "payload": { "key": "sectors", "enabled": true, "description": "Expose published sectors." } },
+      { "seed_key": "yazeed.feature.skills", "payload": { "key": "skills", "enabled": true, "description": "Expose published skills." } },
+      { "seed_key": "yazeed.feature.experience", "payload": { "key": "experience", "enabled": true, "description": "Expose published work experience." } },
+      { "seed_key": "yazeed.feature.credentials", "payload": { "key": "credentials", "enabled": true, "description": "Expose published education, certifications, and recognition." } },
+      { "seed_key": "yazeed.feature.open-source", "payload": { "key": "open_source", "enabled": true, "description": "Expose reviewed open-source work." } },
+      { "seed_key": "yazeed.feature.articles", "payload": { "key": "articles", "enabled": true, "description": "Expose published writing and research records." } },
+      { "seed_key": "yazeed.feature.contact", "payload": { "key": "contact", "enabled": true, "description": "Accept professional and sponsorship inquiries." } },
+      { "seed_key": "yazeed.feature.sponsorship", "payload": { "key": "sponsorship", "enabled": true, "description": "Expose the sponsor page while gateway details are prepared." } },
+      { "seed_key": "yazeed.feature.assistant", "payload": { "key": "assistant", "enabled": false, "description": "Remain disabled until a production provider and reviewed runtime configuration are available.", "configuration": { "greeting": "Ask about Yazeed's published projects, experience, skills, and research.", "suggested_questions": ["Which projects are owned and publicly exposed?", "What AI and data experience is published?"], "disclaimer": "Answers use published portfolio evidence only.", "max_question_length": 600 } } },
+      { "seed_key": "yazeed.feature.site-settings", "payload": { "key": "site_settings", "enabled": true, "description": "Canonical presentation copy for Yazeed Hasan's portfolio.", "configuration": { "site_name": "Yazeed Hasan", "default_title": "Yazeed Hasan — AI & Data Science", "default_description": "AI engineering, data platforms, MLOps, delivery leadership, and owned products by Yazeed Hasan.", "locale": "en", "footer_eyebrow": "Yazeed Hasan / Amman", "footer_heading": "Build useful systems. Ship accountable outcomes.", "footer_statement": "AI, data, product, and delivery — connected end to end.", "about_title": "The person behind the systems.", "about_intro": "Personal context, technical strengths, professional interests, and the principles behind the work.", "achievements_title": "A record of earned milestones.", "achievements_intro": "Certifications, awards, professional achievements, academic recognition, and published research.", "work_title": "Work across roles and operating contexts.", "work_intro": "Primary employment, independent contracts, part-time teaching, project work, and early technical practice.", "projects_title": "Products and open work I can stand behind.", "projects_intro": "Owned and publicly exposed products, software, and open-source contributions.", "writing_title": "Writing & research", "writing_intro": "Published research, technical field notes, and practical explanations.", "sectors_title": "Applied sectors", "sectors_intro": "Domains supported by published project and experience evidence.", "open_source_title": "Open-source work", "open_source_intro": "Reviewed public software and contribution work.", "sponsorship_title": "Sponsor a useful idea, project, or public contribution.", "sponsorship_description": "Direct sponsorship details are being prepared. Purpose-specific sponsorship inquiries are open now.", "sponsorship_principles": ["Scope and purpose are agreed before funds move.", "Sponsorship never purchases private access or editorial control.", "Public and open-source work remains technically independent."] } } }
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "hero": {"variants": ["portrait"], "default_variant": "portrait", "default_limit": 1, "feature_key": null},
+  "resume": {"variants": ["default"], "default_variant": "default", "default_limit": 1, "feature_key": "resume"},
+  "availability": {"variants": ["badge"], "default_variant": "badge", "default_limit": 1, "feature_key": null},
+  "what_i_build": {"variants": ["columns"], "default_variant": "columns", "default_limit": 3, "feature_key": null},
+  "categories": {"variants": ["cards"], "default_variant": "cards", "default_limit": 12, "feature_key": null},
+  "selected_work": {"variants": ["cinematic"], "default_variant": "cinematic", "default_limit": 5, "feature_key": "projects"},
+  "metrics": {"variants": ["cards"], "default_variant": "cards", "default_limit": 12, "feature_key": "metrics"},
+  "testimonials": {"variants": ["cards"], "default_variant": "cards", "default_limit": 8, "feature_key": "testimonials"},
+  "sectors": {"variants": ["cards"], "default_variant": "cards", "default_limit": 20, "feature_key": "sectors"},
+  "skills": {"variants": ["universe"], "default_variant": "universe", "default_limit": 100, "feature_key": "skills"},
+  "experience": {"variants": ["timeline"], "default_variant": "timeline", "default_limit": 8, "feature_key": "experience"},
+  "education": {"variants": ["cards"], "default_variant": "cards", "default_limit": 8, "feature_key": "credentials"},
+  "certifications": {"variants": ["cards"], "default_variant": "cards", "default_limit": 12, "feature_key": "credentials"},
+  "open_source": {"variants": ["cards"], "default_variant": "cards", "default_limit": 8, "feature_key": "open_source"},
+  "sponsorship": {"variants": ["default"], "default_variant": "default", "default_limit": 1, "feature_key": "sponsorship"},
+  "writing": {"variants": ["cards"], "default_variant": "cards", "default_limit": 6, "feature_key": "articles"},
+  "assistant": {"variants": ["default"], "default_variant": "default", "default_limit": 1, "feature_key": "assistant"},
+  "contact": {"variants": ["default"], "default_variant": "default", "default_limit": 1, "feature_key": "contact"},
+  "social_links": {"variants": ["marquee"], "default_variant": "marquee", "default_limit": 20, "feature_key": null},
+  "editorial": {"variants": ["split"], "default_variant": "split", "default_limit": 1, "feature_key": null}
+}

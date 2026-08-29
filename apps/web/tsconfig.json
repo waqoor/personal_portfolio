@@ -1,0 +1,23 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "incremental": true,
+    "jsx": "preserve",
+    "types": ["node", "vitest/globals", "@testing-library/jest-dom"],
+    "plugins": [{ "name": "next" }],
+    "paths": {
+      "@/*": ["./*"],
+      "@portfolio/api-client": ["../../packages/frontend/api-client/src/index.ts"],
+      "@portfolio/config": ["../../packages/frontend/config/src/index.ts"],
+      "@portfolio/motion": ["../../packages/frontend/motion/src/index.ts"],
+      "@portfolio/ui": ["../../packages/frontend/ui/src/index.ts"]
+    }
+  },
+  "include": [
+    "next-env.d.ts",
+    ".next/types/**/*.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "exclude": ["node_modules", "playwright.config.ts"]
+}
