@@ -4,6 +4,7 @@ from datetime import UTC, date, datetime
 from uuid import UUID
 
 from packages.python.common.settings import Settings
+from services.assistant.contracts import PublishedContentDocument
 from services.content.schemas import PublicArticleRead
 from services.identity.schemas import ProfileRead
 from services.portfolio.schemas import (
@@ -16,9 +17,29 @@ from services.portfolio.schemas import (
     SectorRead,
     SkillSummary,
 )
-from services.public_catalog.service import CanonicalPublicContentProvider, _PublicSnapshot
+from services.public_catalog.service import (
+    CanonicalPublicContentProvider,
+    _document_relevance,
+    _PublicSnapshot,
+)
 
 NOW = datetime(2026, 8, 28, tzinfo=UTC)
+
+
+def test_catalog_relevance_prefers_an_explicit_content_type_intent() -> None:
+    common = {
+        "source_id": "source",
+        "title": "Canonical verification",
+        "excerpt": "Published verification evidence.",
+        "canonical_url": "https://portfolio.example.com/",
+        "published_at": NOW,
+    }
+    profile = PublishedContentDocument(content_type="profile", **common)  # type: ignore[arg-type]
+    project = PublishedContentDocument(content_type="project", **common)  # type: ignore[arg-type]
+
+    terms = {"verification", "project", "prove"}
+
+    assert _document_relevance(project, terms) > _document_relevance(profile, terms)
 
 
 def _published(entity_id: str) -> dict[str, object]:
@@ -232,9 +253,14 @@ def test_canonical_catalog_maps_only_public_contracts_into_ai_and_discovery_docu
         "https://portfolio.example/projects/canonical-platform"
     )
     assert "Public DTOs only" in by_source[f"project:{project_id}"].excerpt
+    assert "Bounded aggregation. Public DTOs only." in by_source[f"project:{project_id}"].excerpt
+    assert by_source[f"article:{article.id}"].excerpt == (
+        "A reviewed explanation of public composition. "
+        "Public contracts keep private implementations private."
+    )
     assert by_source[f"metric:{metric.id}"].canonical_url.endswith("/projects/canonical-platform")
     assert by_source[f"testimonial:{testimonial.id}"].content_type == "approved_testimonial"
-    assert by_source[f"skill:{skill.id}"].canonical_url == "https://portfolio.example/about"
+    assert by_source[f"skill:{skill.id}"].canonical_url == "https://portfolio.example/"
 
     discovery_by_path = {document.path: document for document in discovery_documents}
     assert discovery_by_path["/projects/canonical-platform"].schema_type == ("SoftwareSourceCode")
@@ -243,6 +269,7 @@ def test_canonical_catalog_maps_only_public_contracts_into_ai_and_discovery_docu
         "/projects",
         "/projects/canonical-platform",
     )
-    assert {"/", "/projects", "/writing", "/sectors", "/about", "/open-source"} <= set(
-        discovery_by_path
-    )
+    assert {"/", "/projects", "/writing", "/sectors", "/open-source"} <= set(discovery_by_path)
+    assert "/about" not in discovery_by_path
+    assert "FastAPI" in discovery_by_path["/"].keywords
+    assert "/work" in discovery_by_path["/"].related_paths

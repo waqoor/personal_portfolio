@@ -126,6 +126,7 @@ class DatabaseRateLimiter:
                 delete(RateLimitBucket).where(RateLimitBucket.bucket_key == bucket_key)
             )
 
+
 def _deduplicate(requests: tuple[RateLimitRequest, ...]) -> tuple[RateLimitRequest, ...]:
     unique: dict[tuple[str, str], RateLimitRequest] = {}
     for request in requests:

@@ -480,7 +480,7 @@ async def test_editor_can_author_drafts_but_sensitive_commands_are_owner_only(
                     "description": "Sensitive external destination.",
                     "kind": "external",
                     "cta_label": "Open",
-                    "destination_url": "https://example.com/sensitive",
+                    "destination_url": "https://github.com/sponsors/sensitive",
                 },
             ),
             editor.post(
@@ -525,7 +525,7 @@ async def test_engagement_admin_routes_are_authenticated_and_csrf_protected(
         "description": "An integration-only sponsorship option.",
         "kind": "external",
         "cta_label": "Sponsor",
-        "destination_url": "https://example.com/sponsor",
+        "destination_url": "https://github.com/sponsors/example",
         "is_published": True,
     }
     blocked = await core_api.client.post(
@@ -1258,7 +1258,7 @@ async def test_archived_features_fail_closed_across_every_public_consumer_and_re
                 "description": "A canonical sponsorship record used by the lifecycle matrix.",
                 "kind": "external",
                 "cta_label": "Sponsor",
-                "destination_url": "https://example.com/sponsor",
+                "destination_url": "https://github.com/sponsors/example",
                 "is_published": True,
             },
         )

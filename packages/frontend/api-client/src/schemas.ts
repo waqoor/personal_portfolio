@@ -464,6 +464,7 @@ export const assistantSettingsSchema = z.object({
 export const siteShellSchema = z.object({
   brand_name: z.string(),
   brand_mark: z.string().optional(),
+  brand_logo: mediaAssetSchema.optional(),
   header_navigation: z.array(navigationItemSchema),
   footer_navigation: z.array(navigationItemSchema),
   socials: z.array(socialLinkSchema).default([]),
@@ -582,6 +583,7 @@ export const discoveryPageSchema = z.object({
     description: z.string(),
     canonical_url: z.string(),
     robots: z.string(),
+    keywords: z.array(z.string()).default([]),
     open_graph: z.object({
       type: z.string(),
       site_name: z.string(),

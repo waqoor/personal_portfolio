@@ -203,30 +203,41 @@ class DiscoveryService:
             robots=robots,
             content_type="profile",
             image_url=image_url,
+            keywords=document.keywords if document else (),
             identity=identity,
+        )
+        related_urls = (
+            _safe_related_urls(document.related_paths, self._canonical) if document else []
         )
         graph: list[dict[str, object]] = []
         if document is not None:
+            profile_page: dict[str, object] = {
+                "@type": "ProfilePage",
+                "@id": f"{canonical}#profile-page",
+                "url": canonical,
+                "name": title,
+                "description": description,
+                "inLanguage": identity.language,
+                "about": {"@id": f"{canonical}#person"},
+                "isPartOf": {"@id": f"{canonical}#website"},
+                "mainEntity": {"@id": f"{canonical}#person"},
+            }
+            if image_url:
+                profile_page["primaryImageOfPage"] = image_url
+            if document.keywords:
+                profile_page["keywords"] = list(document.keywords)
+            if related_urls:
+                profile_page["relatedLink"] = related_urls
             graph = [
                 self._person_schema(identity, document),
                 self._website_schema(identity, description=description),
-                {
-                    "@type": "ProfilePage",
-                    "@id": f"{canonical}#profile-page",
-                    "url": canonical,
-                    "name": title,
-                    "description": description,
-                    "inLanguage": identity.language,
-                    "about": {"@id": f"{canonical}#person"},
-                    "isPartOf": {"@id": f"{canonical}#website"},
-                    "mainEntity": {"@id": f"{canonical}#person"},
-                },
+                profile_page,
             ]
         json_ld = {"@context": "https://schema.org", "@graph": graph}
         return DiscoveryPageResponse(
             metadata=metadata,
             breadcrumbs=[BreadcrumbResponse(label="Home", url=canonical)],
-            related_urls=[],
+            related_urls=related_urls,
             json_ld=json_ld,
         )
 
@@ -245,6 +256,7 @@ class DiscoveryService:
             robots=index_decision.directive,
             content_type=document.content_type,
             image_url=image_url or _safe_image_url(identity.social_image_url, self._canonical),
+            keywords=document.keywords,
             identity=identity,
         )
         breadcrumbs = _with_home(document.breadcrumbs)
@@ -289,6 +301,7 @@ class DiscoveryService:
         robots: str,
         content_type: str,
         image_url: str | None,
+        keywords: tuple[str, ...],
         identity: SiteIdentity,
     ) -> PageMetadata:
         clean_description = " ".join(description.split())[:320]
@@ -298,6 +311,7 @@ class DiscoveryService:
             description=clean_description,
             canonical_url=canonical,
             robots=robots,
+            keywords=list(dict.fromkeys(keywords))[:50],
             open_graph=OpenGraphMetadata(
                 type="article" if content_type in {"article", "project"} else "profile",
                 site_name=identity.site_name,
@@ -343,6 +357,12 @@ class DiscoveryService:
         }
         if same_as_urls:
             schema["sameAs"] = list(same_as_urls)
+        if document:
+            image_url = _safe_image_url(document.image_url, self._canonical)
+            if image_url:
+                schema["image"] = image_url
+            if document.keywords:
+                schema["knowsAbout"] = list(document.keywords)
         return schema
 
     def _website_schema(

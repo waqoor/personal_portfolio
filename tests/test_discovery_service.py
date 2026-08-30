@@ -116,6 +116,9 @@ async def test_home_schema_exposes_only_verified_https_same_as() -> None:
                 schema_type="ProfilePage",
                 path="/",
                 title="Published profile",
+                image_url="/media/profile.png",
+                keywords=("Enterprise AI", "MLOps", "Data platforms"),
+                related_paths=("/work", "/projects", "https://evil.invalid/path"),
             )
         ]
     ).page("/")
@@ -123,8 +126,16 @@ async def test_home_schema_exposes_only_verified_https_same_as() -> None:
     assert isinstance(graph, list)
     person = next(item for item in graph if item.get("@type") == "Person")
     assert person["sameAs"] == ["https://github.com/verified-owner"]
+    assert person["image"] == "https://portfolio.example/media/profile.png"
+    assert person["knowsAbout"] == ["Enterprise AI", "MLOps", "Data platforms"]
     assert any(item.get("@type") == "WebSite" for item in graph)
-    assert any(item.get("@type") == "ProfilePage" for item in graph)
+    profile_page = next(item for item in graph if item.get("@type") == "ProfilePage")
+    assert profile_page["primaryImageOfPage"] == "https://portfolio.example/media/profile.png"
+    assert profile_page["keywords"] == ["Enterprise AI", "MLOps", "Data platforms"]
+    assert profile_page["relatedLink"] == [
+        "https://portfolio.example/work",
+        "https://portfolio.example/projects",
+    ]
 
 
 @pytest.mark.asyncio

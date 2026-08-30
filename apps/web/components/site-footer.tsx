@@ -3,6 +3,10 @@ import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { ExternalLink } from "@/components/external-link";
 
+export function copyrightLabel(brandName: string, currentYear = new Date().getFullYear()) {
+  return `\u00A9 2026 - ${currentYear} ${brandName}`;
+}
+
 export function SiteFooter({
   brandName,
   contactEnabled,
@@ -42,7 +46,7 @@ export function SiteFooter({
           </div>
         </div>
         <div className="mt-20 flex flex-col gap-3 border-t border-background/15 pt-6 font-mono text-[0.65rem] uppercase tracking-[0.14em] text-background/70 sm:flex-row sm:items-center sm:justify-between">
-          <span>© {new Date().getFullYear()} {brandName}</span>
+          <span>{copyrightLabel(brandName)}</span>
           <span>{presentation.footer_statement}</span>
         </div>
       </div>

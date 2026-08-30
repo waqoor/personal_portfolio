@@ -96,9 +96,9 @@ export function EditorialSection({ data, section }: { data: HomePage; section: H
     <SectionFrame section={section}>
       <div className="grid gap-6">
         {items.map((item, index) => (
-          <Reveal key={item.id} className="grid overflow-hidden rounded-[var(--radius-card)] border border-border-strong bg-surface-raised lg:grid-cols-2">
-            <div className={`flex min-h-96 flex-col justify-between p-7 sm:p-10 ${index % 2 === 1 ? "lg:order-2" : ""}`}><div>{item.eyebrow && <p className="eyebrow">{item.eyebrow}</p>}<h2 className="display-md mt-7 max-w-[12ch]">{section.custom_heading ?? item.title}</h2></div><div><p className="max-w-xl text-base leading-7 text-muted-foreground">{item.body}</p>{section.cta_visible && item.link && (item.link.external ? <Button asChild variant="text" className="mt-7"><ExternalLink href={item.link.url}>{item.link.label}</ExternalLink></Button> : <Button asChild variant="text" className="mt-7"><Link href={item.link.url}>{item.link.label}<ArrowRight aria-hidden="true" /></Link></Button>)}</div></div>
-            <MediaImage asset={item.media} className={`min-h-96 ${index % 2 === 1 ? "lg:order-1" : ""}`} fallbackLabel="Managed editorial media" />
+          <Reveal id={item.id} key={item.id} className={`grid scroll-mt-28 overflow-hidden rounded-[var(--radius-card)] border border-border-strong bg-surface-raised ${item.media ? "lg:grid-cols-2" : ""}`}>
+            <div className={`flex min-h-96 flex-col justify-between p-7 sm:p-10 ${item.media && index % 2 === 1 ? "lg:order-2" : ""}`}><div>{item.eyebrow && <p className="eyebrow">{item.eyebrow}</p>}<h2 className={`display-md mt-7 ${item.media ? "max-w-[12ch]" : "max-w-[18ch]"}`}>{section.custom_heading ?? item.title}</h2></div><div><p className={`${item.media ? "max-w-xl" : "max-w-4xl"} whitespace-pre-line text-base leading-7 text-muted-foreground`}>{item.body}</p>{section.cta_visible && item.link && (item.link.external ? <Button asChild variant="text" className="mt-7"><ExternalLink href={item.link.url}>{item.link.label}</ExternalLink></Button> : <Button asChild variant="text" className="mt-7"><Link href={item.link.url}>{item.link.label}<ArrowRight aria-hidden="true" /></Link></Button>)}</div></div>
+            {item.media && <MediaImage asset={item.media} className={`min-h-96 ${index % 2 === 1 ? "lg:order-1" : ""}`} fallbackLabel="Managed editorial media" />}
           </Reveal>
         ))}
       </div>

@@ -7,17 +7,17 @@
         "seed_key": "yazeed.profile.primary",
         "payload": {
           "full_name": "Yazeed Hasan",
-          "headline": "End-to-End AI & Data Science Expert | AI/ML Engineering, Data Platforms, MLOps & Delivery Leadership",
-          "short_bio": "End-to-end AI and data science expert with 9+ years in technology, including 7+ years delivering production AI, machine-learning, analytics, and data-platform solutions.",
-          "long_bio": "I work across the full path from business problem framing to data engineering, modeling, generative and agentic AI, deployment, monitoring, governance, and continuous optimization.\n\nMy professional interests center on applied AI, product strategy, open-source technologies, and data-driven decision-making. I care about systems that are useful in practice, legible to the people operating them, and accountable to the outcomes they are meant to create.\n\nOutside work, my interests include travel, history, chess, walking, film, gaming, and exploration.",
+          "headline": "AI & Data Technical Leader | Enterprise AI/ML, Data Platforms, MLOps, Strategy & Delivery",
+          "short_bio": "AI and Data technical leader with 9+ years in technology, including 7+ years delivering production AI, machine-learning, analytics, and data-platform solutions. Leads a seven-member cross-functional Data and AI engineering team across strategy, architecture, governance, delivery, and executive stakeholder decisions.",
+          "long_bio": "I connect executive strategy and customer outcomes with hands-on AI and data architecture, engineering, governance, and production delivery. My work spans predictive machine learning, generative and agentic AI, data platforms, MLOps, analytics, and API-led products across telecommunications, enterprise AI, public-sector analytics, KYC/AML, education, healthcare, and workflow automation. Supported outcomes include 25% higher platform reliability, 20% greater throughput, 40% faster deployments, and 60% lower manual operational workload.\n\nLeadership philosophy / approach\n\nLead through clear business outcomes, disciplined technical decision-making, and accountable delivery. Align executives, customers, and engineering teams on priorities, scope, risks, trade-offs, and measurable value; mentor engineers through architecture and code reviews, technical coaching, and delivery ownership; and maintain governance, quality, security, and production readiness from discovery through operation.\n\nProfessional interests include applied AI, product strategy, open-source technologies, and data-driven decision-making. Personal interests include travel, history, chess, walking, film, gaming, and exploration.",
           "public_location": "Amman, Jordan",
           "availability_status": "selective",
           "availability_detail": "Open to focused conversations about AI, data platforms, product execution, technical leadership, and selective collaboration.",
           "public_email": "yazeed.hasan.97@gmail.com",
-          "primary_cta_label": "Explore my projects",
-          "primary_cta_url": "/projects",
-          "secondary_cta_label": "Discuss sponsorship",
-          "secondary_cta_url": "/sponsor",
+          "primary_cta_label": "Contact Me",
+          "primary_cta_url": "/contact",
+          "secondary_cta_label": "Explore my projects",
+          "secondary_cta_url": "/projects",
           "is_primary": true,
           "status": "published"
         }
@@ -81,7 +81,7 @@
           "name": "AI & Machine Learning",
           "slug": "ai-machine-learning",
           "description": "Production AI, machine learning, generative AI, agentic systems, NLP, evaluation, and optimization.",
-          "color": "#baf43c",
+          "color": "#9fcb4e",
           "sort_order": 1,
           "status": "published"
         }
@@ -92,7 +92,7 @@
           "name": "Data Platforms",
           "slug": "data-platforms",
           "description": "Batch and streaming data engineering, distributed processing, analytics platforms, data quality, and lineage.",
-          "color": "#4f7cff",
+          "color": "#607fb8",
           "sort_order": 2,
           "status": "published"
         }
@@ -103,7 +103,7 @@
           "name": "Product Engineering",
           "slug": "product-engineering",
           "description": "API-first products, workflow automation, software architecture, and operated technical systems.",
-          "color": "#f3a95f",
+          "color": "#c98a5b",
           "sort_order": 3,
           "status": "published"
         }
@@ -114,7 +114,7 @@
           "name": "Leadership & Delivery",
           "slug": "leadership-delivery",
           "description": "Technical leadership, project delivery, governance, stakeholder alignment, and production readiness.",
-          "color": "#9b8cff",
+          "color": "#8d79a8",
           "sort_order": 4,
           "status": "published"
         }
@@ -180,7 +180,7 @@
         "payload": {
           "title": "MentoraX.net",
           "slug": "mentorax-net",
-          "summary": "An owned and publicly exposed Yazeed Hasan product; the reviewed product case study will expand as further details are supplied.",
+          "summary": "An independently owned Yazeed Hasan product published at mentorax.net.",
           "role": "Owner",
           "live_url": "https://mentorax.net",
           "nature": "product",
@@ -195,7 +195,7 @@
         "payload": {
           "title": "Waqoor.com",
           "slug": "waqoor-com",
-          "summary": "An owned and publicly exposed Yazeed Hasan project; detailed scope and evidence will be added after owner review.",
+          "summary": "An independently owned Yazeed Hasan product published at waqoor.com.",
           "role": "Owner",
           "live_url": "https://waqoor.com",
           "nature": "product",
@@ -210,7 +210,7 @@
         "payload": {
           "title": "MCPlica",
           "slug": "mcplica",
-          "summary": "Open-source work owned by or contributed to by Yazeed Hasan; the repository link and reviewed contribution scope will be added when supplied.",
+          "summary": "Open-source software owned by or contributed to by Yazeed Hasan.",
           "role": "Owner / contributor",
           "is_open_source": true,
           "nature": "software",
@@ -241,9 +241,256 @@
         "payload": {
           "title": "RAAD",
           "slug": "raad",
-          "summary": "Open-source work owned by or contributed to by Yazeed Hasan; detailed scope and repository evidence will be added after review.",
+          "summary": "Open-source software owned by or contributed to by Yazeed Hasan.",
           "role": "Owner / contributor",
           "is_open_source": true,
+          "nature": "software",
+          "status": "published"
+        }
+      },
+      {
+        "seed_key": "yazeed.project.ai-agents-factory",
+        "category_seed_key": "yazeed.category.ai-ml",
+        "skill_seed_keys": ["yazeed.skill.genai", "yazeed.skill.agents", "yazeed.skill.mlops", "yazeed.skill.data-quality", "yazeed.skill.leadership"],
+        "sector_seed_keys": ["yazeed.sector.enterprise-ai"],
+        "payload": {
+          "title": "AI Agents Factory Platform",
+          "slug": "ai-agents-factory-platform",
+          "summary": "A unified internal platform for rapid, governed enterprise-agent development across reusable orchestration, RAG, tools, workflow, knowledge, state, memory, and operational patterns.",
+          "description": "Integrates multiple open-source agent frameworks and orchestration technologies, with authentication, RBAC, auditing, monitoring, logging, governance, and production controls for enterprise adoption.",
+          "role": "Technical lead",
+          "start_date": "2026-01-01",
+          "features": ["Multi-agent orchestration", "RAG and governed knowledge access", "Tool calling and workflow execution", "State, memory, and operational traceability", "Authentication, RBAC, auditing, and monitoring"],
+          "nature": "software",
+          "status": "published"
+        }
+      },
+      {
+        "seed_key": "yazeed.project.cap-hotline",
+        "category_seed_key": "yazeed.category.ai-ml",
+        "skill_seed_keys": ["yazeed.skill.genai", "yazeed.skill.agents", "yazeed.skill.nlp", "yazeed.skill.data-quality"],
+        "sector_seed_keys": ["yazeed.sector.enterprise-ai", "yazeed.sector.workflow"],
+        "payload": {
+          "title": "CAP Hotline Multi-Agent AI Assistant",
+          "slug": "cap-hotline-multi-agent-assistant",
+          "summary": "A CRM-focused multi-agent assistant using RAG, inventory data, historical support tickets, guided resolution, and governed enterprise actions.",
+          "description": "The assistant supported intake, onboarding, issue classification, retrieval, answer generation, guided resolution, human escalation, ticket creation, triage, and routing.",
+          "role": "AI engineer",
+          "start_date": "2026-04-01",
+          "end_date": "2026-06-01",
+          "nature": "case_study",
+          "status": "published"
+        }
+      },
+      {
+        "seed_key": "yazeed.project.audino",
+        "category_seed_key": "yazeed.category.ai-ml",
+        "skill_seed_keys": ["yazeed.skill.genai", "yazeed.skill.nlp", "yazeed.skill.sql", "yazeed.skill.fastapi", "yazeed.skill.gcp", "yazeed.skill.data-quality"],
+        "sector_seed_keys": ["yazeed.sector.enterprise-ai"],
+        "payload": {
+          "title": "Audino — Text-to-SQL & SQL-to-Text AI Analytics Assistant",
+          "slug": "audino-ai-analytics-assistant",
+          "summary": "A generative-AI analytics engine translating natural-language questions into optimized BigQuery SQL and query results into contextual business narratives.",
+          "description": "Built with FastAPI on Cloud Run, Gemini models, prompt routing, tool invocation, schema and context injection, validation, governed access, Redis-backed sessions, caching, memory, SQL safety, and explainability controls.",
+          "role": "Senior AI engineer",
+          "start_date": "2025-10-01",
+          "end_date": "2026-02-01",
+          "nature": "software",
+          "status": "published"
+        }
+      },
+      {
+        "seed_key": "yazeed.project.telecom-analytics-suite",
+        "category_seed_key": "yazeed.category.ai-ml",
+        "skill_seed_keys": ["yazeed.skill.python", "yazeed.skill.ml", "yazeed.skill.spark", "yazeed.skill.airflow", "yazeed.skill.aws", "yazeed.skill.mlops", "yazeed.skill.genai", "yazeed.skill.sql"],
+        "sector_seed_keys": ["yazeed.sector.telecom"],
+        "payload": {
+          "title": "Telecom CLTV, Churn & Segmentation Analytics Suite",
+          "slug": "telecom-cltv-churn-segmentation-suite",
+          "summary": "An end-to-end telecom data-science suite for customer lifetime value, segmentation, churn prediction, revenue forecasting, and campaign optimization.",
+          "description": "Scalable data preparation, feature engineering, training, evaluation, experiment tracking, batch scoring, dashboards, and LLM-assisted narrative insights using Python, PySpark, Airflow, Redshift, SageMaker, XGBoost, scikit-learn, TensorFlow, and MLflow.",
+          "role": "Technical lead and data scientist",
+          "start_date": "2025-06-01",
+          "end_date": "2026-04-01",
+          "nature": "case_study",
+          "status": "published"
+        }
+      },
+      {
+        "seed_key": "yazeed.project.kyc-aml-screening",
+        "category_seed_key": "yazeed.category.ai-ml",
+        "skill_seed_keys": ["yazeed.skill.python", "yazeed.skill.nlp", "yazeed.skill.fastapi", "yazeed.skill.data-quality"],
+        "sector_seed_keys": ["yazeed.sector.financial-services"],
+        "payload": {
+          "title": "Multilingual KYC/AML Name Screening System",
+          "slug": "multilingual-kyc-aml-name-screening",
+          "summary": "An AI-assisted financial name-screening system for secure multilingual normalization, transliteration, aliases, similarity scoring, and watchlist matching.",
+          "description": "Aggregated and validated multiple compliance sources, exposed secure REST workflows, and applied transformer models plus threshold-based decisions to classify records as cleared or flagged for human review.",
+          "role": "AI engineer",
+          "start_date": "2025-02-01",
+          "end_date": "2025-04-01",
+          "nature": "software",
+          "status": "published"
+        }
+      },
+      {
+        "seed_key": "yazeed.project.big-data-quality",
+        "category_seed_key": "yazeed.category.data-platforms",
+        "skill_seed_keys": ["yazeed.skill.python", "yazeed.skill.spark", "yazeed.skill.sql", "yazeed.skill.data-quality"],
+        "sector_seed_keys": ["yazeed.sector.telecom"],
+        "payload": {
+          "title": "Big Data Quality Control Suite",
+          "slug": "big-data-quality-control-suite",
+          "summary": "An end-to-end production data-quality platform spanning four data layers, from requirements and rules through deployment, monitoring, issue classification, and remediation.",
+          "description": "Profiling, validation, reconciliation, quality scoring, duplicate detection, partially committed file reprocessing, dashboards, and alerts were built with Python, Pandas, PySpark, HDFS/DFS APIs, PostgreSQL, and Trino/Presto SQL.",
+          "role": "Sole designer and delivery engineer",
+          "start_date": "2023-09-01",
+          "end_date": "2025-01-01",
+          "outcomes": ["Improved data quality by approximately 40%", "Reduced issue-resolution time by approximately 70%", "Reduced investigation time by approximately 90%"],
+          "nature": "software",
+          "status": "published"
+        }
+      },
+      {
+        "seed_key": "yazeed.project.nyc-taxi",
+        "category_seed_key": "yazeed.category.data-platforms",
+        "skill_seed_keys": ["yazeed.skill.python", "yazeed.skill.sql", "yazeed.skill.data-quality"],
+        "payload": {
+          "title": "NYC Taxi Data Engineering & Analytics Platform",
+          "slug": "nyc-taxi-data-engineering-analytics",
+          "summary": "A reusable pipeline for acquiring public NYC taxi data, validating and transforming it, persisting it transactionally, and preparing analytical datasets and Grafana dashboards.",
+          "role": "Independent project builder",
+          "start_date": "2024-04-01",
+          "end_date": "2024-06-01",
+          "nature": "case_study",
+          "status": "published"
+        }
+      },
+      {
+        "seed_key": "yazeed.project.retention-executor",
+        "category_seed_key": "yazeed.category.data-platforms",
+        "skill_seed_keys": ["yazeed.skill.python", "yazeed.skill.spark", "yazeed.skill.sql", "yazeed.skill.mlops", "yazeed.skill.data-quality"],
+        "sector_seed_keys": ["yazeed.sector.telecom"],
+        "payload": {
+          "title": "HDFS/DFS Retention Policy Executor",
+          "slug": "hdfs-dfs-retention-policy-executor",
+          "summary": "An automated, audited data-retention engine enforcing lifecycle and governance policies across distributed file systems at scale.",
+          "description": "Policy evaluation, data selection, execution, audit, Grafana monitoring, and alerts were containerized with Docker and orchestrated on Kubernetes.",
+          "role": "Designer and delivery engineer",
+          "start_date": "2023-06-01",
+          "end_date": "2024-04-01",
+          "outcomes": ["Saved approximately 60% of developer and infrastructure time previously spent on retention work"],
+          "nature": "software",
+          "status": "published"
+        }
+      },
+      {
+        "seed_key": "yazeed.project.figuroz",
+        "category_seed_key": "yazeed.category.product-engineering",
+        "payload": {
+          "title": "Figuroz Workforce Activity Analytics Tool",
+          "slug": "figuroz-workforce-activity-analytics",
+          "summary": "An authorized desktop data-collection and analytics tool for near-real-time keyboard, mouse, application-usage, utilization, activity-pattern, and time-allocation records.",
+          "role": "Independent project builder",
+          "start_date": "2022-10-01",
+          "end_date": "2022-12-01",
+          "nature": "software",
+          "status": "published"
+        }
+      },
+      {
+        "seed_key": "yazeed.project.ai4code",
+        "category_seed_key": "yazeed.category.ai-ml",
+        "skill_seed_keys": ["yazeed.skill.python", "yazeed.skill.ml", "yazeed.skill.nlp"],
+        "payload": {
+          "title": "Google AI4Code LLM/NLP Competition",
+          "slug": "google-ai4code-nlp-competition",
+          "summary": "An NLP ranking model using DistilBERT representations and WaveNet-style gating to infer relationships and ordering between code and markdown cells in Python notebooks.",
+          "role": "Kaggle competitor",
+          "start_date": "2022-06-01",
+          "end_date": "2022-08-01",
+          "nature": "case_study",
+          "status": "published"
+        }
+      },
+      {
+        "seed_key": "yazeed.project.medical-qa",
+        "category_seed_key": "yazeed.category.ai-ml",
+        "skill_seed_keys": ["yazeed.skill.python", "yazeed.skill.ml", "yazeed.skill.nlp"],
+        "sector_seed_keys": ["yazeed.sector.healthcare"],
+        "payload": {
+          "title": "Medical Question-Answering NLP System",
+          "slug": "medical-question-answering-nlp",
+          "summary": "A medical question-answering proof of concept using BERT, DistilBERT, and Hugging Face Transformers on a clinic-provided dataset.",
+          "description": "Included domain text preprocessing, model training, evaluation, inference, and reproducible source code for testing and maintenance.",
+          "role": "Independent project builder",
+          "start_date": "2022-04-01",
+          "end_date": "2022-05-01",
+          "is_open_source": true,
+          "nature": "software",
+          "status": "published"
+        }
+      },
+      {
+        "seed_key": "yazeed.project.covid-field-data",
+        "category_seed_key": "yazeed.category.product-engineering",
+        "sector_seed_keys": ["yazeed.sector.healthcare", "yazeed.sector.public-sector"],
+        "payload": {
+          "title": "COVID-19 Field Data Collection Platform",
+          "slug": "covid-19-field-data-collection",
+          "summary": "Three Android applications for collecting, validating, synchronizing, and updating COVID-19 medical-status data in field workflows.",
+          "description": "Integrated Firebase real-time processing, QR scanning, patient-status updates, record modification, and controlled deletion.",
+          "role": "Application developer",
+          "start_date": "2020-05-01",
+          "end_date": "2020-06-01",
+          "nature": "software",
+          "status": "published"
+        }
+      },
+      {
+        "seed_key": "yazeed.project.covid-seiqr",
+        "category_seed_key": "yazeed.category.ai-ml",
+        "skill_seed_keys": ["yazeed.skill.python", "yazeed.skill.ml"],
+        "sector_seed_keys": ["yazeed.sector.healthcare", "yazeed.sector.public-sector"],
+        "payload": {
+          "title": "COVID-19 SEIQR Simulation & Forecasting Model",
+          "slug": "covid-19-seiqr-simulation-forecasting",
+          "summary": "An SEIQR epidemiological simulation for infection-trend forecasting, scenario analysis, and policy-impact assessment.",
+          "description": "Model-input and result-processing workflows were deployed through a Django web application for public-health decision support.",
+          "role": "AI developer",
+          "start_date": "2020-04-01",
+          "end_date": "2020-06-01",
+          "nature": "case_study",
+          "status": "published"
+        }
+      },
+      {
+        "seed_key": "yazeed.project.healthcare-python",
+        "category_seed_key": "yazeed.category.product-engineering",
+        "skill_seed_keys": ["yazeed.skill.python", "yazeed.skill.sql"],
+        "sector_seed_keys": ["yazeed.sector.healthcare"],
+        "payload": {
+          "title": "Health Care Data Management System — Python / PostgreSQL",
+          "slug": "healthcare-data-management-python-postgresql",
+          "summary": "A multi-role desktop healthcare application for patient, doctor, administrator, and manager workflows with structured PostgreSQL storage.",
+          "role": "Project builder",
+          "start_date": "2019-11-01",
+          "end_date": "2020-05-01",
+          "nature": "software",
+          "status": "published"
+        }
+      },
+      {
+        "seed_key": "yazeed.project.healthcare-javafx",
+        "category_seed_key": "yazeed.category.product-engineering",
+        "sector_seed_keys": ["yazeed.sector.healthcare"],
+        "payload": {
+          "title": "Health Care Data Management System — JavaFX / MS Access",
+          "slug": "healthcare-data-management-javafx",
+          "summary": "A JavaFX desktop system for patient registration, tracking, database interaction, and operational healthcare workflows.",
+          "role": "University project builder",
+          "start_date": "2017-09-01",
+          "end_date": "2018-01-01",
           "nature": "software",
           "status": "published"
         }
@@ -460,7 +707,7 @@
           "title": "Towards a Direct Mental Based Decision Making: Electroencephalography (EEG) Case Study",
           "slug": "eeg-direct-mental-decision-making",
           "excerpt": "An IEEE ICICS 2020 paper and reproducible EEG/EMG brain-computer interface prototype for real-time decision mapping.",
-          "body_markdown": "# Towards a Direct Mental Based Decision Making\n\n**Conference:** 2020 11th International Conference on Information and Communication Systems (ICICS)  \n**Published:** April 2020  \n**DOI:** [10.1109/ICICS49469.2020.239502](https://doi.org/10.1109/ICICS49469.2020.239502)\n\nYazeed Hasan co-authored this paper after research and implementation completed from January through April 2019.\n\nThe work designed and implemented an AI-enabled brain-computer-interface Tetris prototype controlled through EEG and EMG signals. It covered signal capture, numerical feature extraction, model inference, real-time decision mapping, and integration of model outputs with game-control APIs.\n\nThe reproducible implementation was released through a GitHub code repository; the repository URL can be added here after it is reviewed and supplied.",
+          "body_markdown": "# Towards a Direct Mental Based Decision Making\n\n**Conference:** 2020 11th International Conference on Information and Communication Systems (ICICS)  \n**Published:** April 2020  \n**DOI:** [10.1109/ICICS49469.2020.239502](https://doi.org/10.1109/ICICS49469.2020.239502)\n\nYazeed Hasan co-authored this paper after research and implementation completed from January through April 2019.\n\nThe work designed and implemented an AI-enabled brain-computer-interface Tetris prototype controlled through EEG and EMG signals. It covered signal capture, numerical feature extraction, model inference, real-time decision mapping, and integration of model outputs with game-control APIs.\n\nThe reproducible implementation was released through a GitHub code repository.",
           "topics": ["Publication", "EEG", "Brain-computer interface", "AI research"],
           "reading_minutes": 2,
           "seo_title": "EEG Decision Making Case Study — Yazeed Hasan",
@@ -471,19 +718,21 @@
     ],
     "homepage_sections": [
       { "seed_key": "yazeed.section.hero", "payload": { "section_type": "hero", "position": 0, "variant": "portrait", "animation_variant": "stagger", "status": "published" } },
-      { "seed_key": "yazeed.section.projects", "payload": { "section_type": "selected_work", "title": "Owned products and open work", "position": 1, "variant": "cinematic", "animation_variant": "reveal", "feature_key": "projects", "data_limit": 5, "status": "published" } },
-      { "seed_key": "yazeed.section.skills", "payload": { "section_type": "skills", "title": "Technical range", "position": 2, "variant": "universe", "animation_variant": "reveal", "feature_key": "skills", "status": "published" } },
-      { "seed_key": "yazeed.section.experience", "payload": { "section_type": "experience", "title": "Selected work history", "position": 3, "variant": "timeline", "animation_variant": "reveal", "feature_key": "experience", "data_limit": 3, "status": "published" } },
-      { "seed_key": "yazeed.section.certifications", "payload": { "section_type": "certifications", "title": "Credentials and recognition", "position": 4, "variant": "cards", "animation_variant": "reveal", "feature_key": "credentials", "data_limit": 6, "status": "published" } },
-      { "seed_key": "yazeed.section.social", "payload": { "section_type": "social_links", "title": "Find me online", "position": 5, "variant": "marquee", "animation_variant": "none", "status": "published" } },
-      { "seed_key": "yazeed.section.contact", "payload": { "section_type": "contact", "title": "Start a focused conversation", "position": 6, "variant": "default", "animation_variant": "reveal", "feature_key": "contact", "status": "published" } }
+      { "seed_key": "yazeed.section.leadership", "payload": { "section_type": "editorial", "title": "Leadership philosophy / approach", "position": 1, "variant": "executive", "animation_variant": "reveal", "show_cta": false, "theme": "muted", "configuration": { "blocks": [{ "id": "leadership-approach", "eyebrow": "Leadership philosophy / approach", "title": "Align outcomes, decisions, and accountable delivery.", "body": "Lead through clear business outcomes, disciplined technical decision-making, and accountable delivery. Align executives, customers, and engineering teams on priorities, scope, risks, trade-offs, and measurable value; mentor engineers through architecture and code reviews, technical coaching, and delivery ownership; and maintain governance, quality, security, and production readiness from discovery through operation." }] }, "status": "published" } },
+      { "seed_key": "yazeed.section.projects", "payload": { "section_type": "selected_work", "title": "Owned products and selected professional work", "position": 2, "variant": "cinematic", "animation_variant": "reveal", "feature_key": "projects", "data_limit": 5, "status": "published" } },
+      { "seed_key": "yazeed.section.skills", "payload": { "section_type": "skills", "title": "AI, data, platform, and delivery capabilities", "position": 3, "variant": "universe", "animation_variant": "reveal", "feature_key": "skills", "status": "published" } },
+      { "seed_key": "yazeed.section.experience", "payload": { "section_type": "experience", "title": "Leadership and delivery experience", "position": 4, "variant": "timeline", "animation_variant": "reveal", "feature_key": "experience", "data_limit": 4, "status": "published" } },
+      { "seed_key": "yazeed.section.education", "payload": { "section_type": "education", "title": "Education", "position": 5, "variant": "cards", "animation_variant": "reveal", "feature_key": "credentials", "status": "published" } },
+      { "seed_key": "yazeed.section.certifications", "payload": { "section_type": "certifications", "title": "Credentials and recognition", "position": 6, "variant": "cards", "animation_variant": "reveal", "feature_key": "credentials", "data_limit": 6, "status": "published" } },
+      { "seed_key": "yazeed.section.resume", "payload": { "section_type": "resume", "title": "Resume", "position": 7, "variant": "download", "animation_variant": "reveal", "feature_key": "resume", "status": "published" } },
+      { "seed_key": "yazeed.section.social", "payload": { "section_type": "social_links", "title": "Find me online", "position": 8, "variant": "marquee", "animation_variant": "none", "status": "published" } },
+      { "seed_key": "yazeed.section.contact", "payload": { "section_type": "contact", "title": "Start a focused conversation", "position": 9, "variant": "default", "animation_variant": "reveal", "feature_key": "contact", "status": "published" } }
     ],
     "navigation": [
-      { "seed_key": "yazeed.nav.about", "payload": { "label": "About", "href": "/about", "sort_order": 0, "status": "published" } },
-      { "seed_key": "yazeed.nav.achievements", "payload": { "label": "Achievements", "href": "/achievements", "sort_order": 1, "status": "published" } },
-      { "seed_key": "yazeed.nav.work", "payload": { "label": "Work", "href": "/work", "sort_order": 2, "status": "published" } },
-      { "seed_key": "yazeed.nav.projects", "payload": { "label": "Projects", "href": "/projects", "sort_order": 3, "status": "published" } },
-      { "seed_key": "yazeed.nav.sponsor", "payload": { "label": "Sponsor", "href": "/sponsor", "sort_order": 4, "status": "published" } }
+      { "seed_key": "yazeed.nav.work", "payload": { "label": "Work", "href": "/work", "sort_order": 0, "status": "published" } },
+      { "seed_key": "yazeed.nav.projects", "payload": { "label": "Projects", "href": "/projects", "sort_order": 1, "status": "published" } },
+      { "seed_key": "yazeed.nav.achievements", "payload": { "label": "Achievements", "href": "/achievements", "sort_order": 2, "status": "published" } },
+      { "seed_key": "yazeed.nav.sponsor", "payload": { "label": "Sponsor", "href": "/sponsor", "sort_order": 3, "status": "published" } }
     ],
     "features": [
       { "seed_key": "yazeed.feature.projects", "payload": { "key": "projects", "enabled": true, "description": "Expose owned and publicly reviewed projects." } },
@@ -494,9 +743,10 @@
       { "seed_key": "yazeed.feature.open-source", "payload": { "key": "open_source", "enabled": true, "description": "Expose reviewed open-source work." } },
       { "seed_key": "yazeed.feature.articles", "payload": { "key": "articles", "enabled": true, "description": "Expose published writing and research records." } },
       { "seed_key": "yazeed.feature.contact", "payload": { "key": "contact", "enabled": true, "description": "Accept professional and sponsorship inquiries." } },
-      { "seed_key": "yazeed.feature.sponsorship", "payload": { "key": "sponsorship", "enabled": true, "description": "Expose the sponsor page while gateway details are prepared." } },
+      { "seed_key": "yazeed.feature.sponsorship", "payload": { "key": "sponsorship", "enabled": true, "description": "Expose GitHub Sponsors support and private sponsorship inquiries." } },
+      { "seed_key": "yazeed.feature.resume", "payload": { "key": "resume", "enabled": true, "description": "Expose the reviewed current resume through the stable public download route." } },
       { "seed_key": "yazeed.feature.assistant", "payload": { "key": "assistant", "enabled": false, "description": "Remain disabled until a production provider and reviewed runtime configuration are available.", "configuration": { "greeting": "Ask about Yazeed's published projects, experience, skills, and research.", "suggested_questions": ["Which projects are owned and publicly exposed?", "What AI and data experience is published?"], "disclaimer": "Answers use published portfolio evidence only.", "max_question_length": 600 } } },
-      { "seed_key": "yazeed.feature.site-settings", "payload": { "key": "site_settings", "enabled": true, "description": "Canonical presentation copy for Yazeed Hasan's portfolio.", "configuration": { "site_name": "Yazeed Hasan", "default_title": "Yazeed Hasan — AI & Data Science", "default_description": "AI engineering, data platforms, MLOps, delivery leadership, and owned products by Yazeed Hasan.", "locale": "en", "footer_eyebrow": "Yazeed Hasan / Amman", "footer_heading": "Build useful systems. Ship accountable outcomes.", "footer_statement": "AI, data, product, and delivery — connected end to end.", "about_title": "The person behind the systems.", "about_intro": "Personal context, technical strengths, professional interests, and the principles behind the work.", "achievements_title": "A record of earned milestones.", "achievements_intro": "Certifications, awards, professional achievements, academic recognition, and published research.", "work_title": "Work across roles and operating contexts.", "work_intro": "Primary employment, independent contracts, part-time teaching, project work, and early technical practice.", "projects_title": "Products and open work I can stand behind.", "projects_intro": "Owned and publicly exposed products, software, and open-source contributions.", "writing_title": "Writing & research", "writing_intro": "Published research, technical field notes, and practical explanations.", "sectors_title": "Applied sectors", "sectors_intro": "Domains supported by published project and experience evidence.", "open_source_title": "Open-source work", "open_source_intro": "Reviewed public software and contribution work.", "sponsorship_title": "Sponsor a useful idea, project, or public contribution.", "sponsorship_description": "Direct sponsorship details are being prepared. Purpose-specific sponsorship inquiries are open now.", "sponsorship_principles": ["Scope and purpose are agreed before funds move.", "Sponsorship never purchases private access or editorial control.", "Public and open-source work remains technically independent."] } } }
+      { "seed_key": "yazeed.feature.site-settings", "payload": { "key": "site_settings", "enabled": true, "description": "Canonical presentation copy for Yazeed Hasan's portfolio.", "configuration": { "site_name": "Yazeed Hasan", "default_title": "Yazeed Hasan — AI & Data Technical Leader", "default_description": "Enterprise AI/ML, data platforms, MLOps, strategy, technical leadership, and accountable delivery by Yazeed Hasan.", "locale": "en", "footer_eyebrow": "Yazeed Hasan / Amman", "footer_heading": "Align strategy. Build useful systems. Deliver accountable outcomes.", "footer_statement": "Enterprise AI, data platforms, MLOps, strategy, and delivery.", "about_title": "Leadership, technical depth, and accountable delivery.", "about_intro": "A source-backed professional profile consolidated into the homepage.", "achievements_title": "A record of earned milestones.", "achievements_intro": "Certifications, awards, professional achievements, academic recognition, and published research.", "work_title": "Leadership and delivery across operating contexts.", "work_intro": "Primary leadership roles, independent contracts, technical instruction, project work, and early engineering practice.", "projects_title": "AI, data, and product systems delivered in context.", "projects_intro": "Owned products and resume-backed professional projects across enterprise AI, telecommunications, public-sector analytics, financial services, education, and healthcare.", "writing_title": "Writing & research", "writing_intro": "Published research, technical field notes, and practical explanations.", "sectors_title": "Applied sectors", "sectors_intro": "Domains supported by published project and experience evidence.", "open_source_title": "Open-source work", "open_source_intro": "Reviewed public software and contribution work.", "sponsorship_title": "Sponsor a useful idea, project, or public contribution.", "sponsorship_description": "Direct support runs through GitHub Sponsors. Purpose-specific sponsorship inquiries are also open.", "sponsorship_principles": ["Scope and purpose are agreed before funds move.", "Sponsorship never purchases private access or editorial control.", "Public and open-source work remains technically independent."] } } }
     ]
   }
 }

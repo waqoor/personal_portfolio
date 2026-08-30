@@ -148,6 +148,32 @@ async def test_contact_is_committed_before_failed_notification(
 
 
 @pytest.mark.asyncio
+async def test_sponsorship_inquiry_uses_the_existing_contact_persistence(
+    database_client: DatabaseClient,
+) -> None:
+    request = _request().model_copy(
+        update={
+            "category": "sponsorship",
+            "subject": "Open-source sponsorship",
+        }
+    )
+    receipt = await _service(database_client, RecordingEmailClient()).submit(
+        request,
+        ContactRequestContext(
+            client_ip="203.0.113.18",
+            idempotency_key="sponsorship-inquiry-0001",
+        ),
+    )
+
+    async with database_client.session_factory() as session:
+        stored = await session.get(ContactSubmission, receipt.reference_id)
+
+    assert stored is not None
+    assert stored.category == "sponsorship"
+    assert stored.subject == "Open-source sponsorship"
+
+
+@pytest.mark.asyncio
 async def test_contact_idempotency_key_is_bound_to_canonical_payload(
     database_client: DatabaseClient,
 ) -> None:
@@ -398,6 +424,19 @@ async def test_sponsorship_lists_only_published_options(
                     is_archived=False,
                     updated_at=datetime.now(UTC),
                 ),
+                SponsorshipOption(
+                    id="00000000-0000-0000-0000-000000000099",
+                    slug="legacy-non-github",
+                    title="Legacy destination",
+                    description="A legacy HTTPS row that must not reach the public response.",
+                    kind="external",
+                    cta_label="Legacy",
+                    destination_url="https://example.com/sponsor",
+                    sort_order=3,
+                    is_published=True,
+                    is_archived=False,
+                    updated_at=datetime.now(UTC),
+                ),
             ]
         )
         await session.commit()
@@ -461,7 +500,7 @@ async def test_discovery_exposes_only_available_engagement_routes(
                 description="A published test-only sponsorship option.",
                 kind="external",
                 cta_label="Sponsor",
-                destination_url="https://example.com/sponsor",
+                destination_url="https://github.com/sponsors/example",
                 sort_order=1,
                 is_published=True,
                 is_archived=False,
@@ -504,7 +543,7 @@ async def test_authenticated_engagement_management_uses_canonical_records(
             description="A test-only published sponsorship option.",
             kind="external",
             cta_label="Sponsor",
-            destination_url="https://example.com/sponsor",
+            destination_url="https://github.com/sponsors/example",
             is_published=True,
         )
     )
@@ -533,6 +572,49 @@ def test_sponsorship_admin_rejects_non_https_destination() -> None:
             cta_label="Open",
             destination_url="http://example.com/sponsor",
         )
+
+
+@pytest.mark.parametrize(
+    "destination_url",
+    [
+        "https://example.com/sponsor",
+        "https://github.com.example.test/sponsors/example",
+        "https://github.com:8443/sponsors/example",
+        "https://user@github.com/sponsors/example",
+        "https://github.com/not-sponsors/example",
+        "https://github.com/sponsors",
+    ],
+)
+def test_sponsorship_admin_rejects_non_github_https_destination(
+    destination_url: str,
+) -> None:
+    with pytest.raises(ValueError, match="GitHub Sponsors"):
+        SponsorshipOptionCreate(
+            slug="other-checkout",
+            title="Other checkout",
+            description="Card handling must remain on GitHub Sponsors.",
+            kind="external",
+            cta_label="Open",
+            destination_url=destination_url,
+        )
+
+
+def test_sponsorship_admin_update_rejects_non_github_destination() -> None:
+    with pytest.raises(ValueError, match="GitHub Sponsors"):
+        SponsorshipOptionUpdate(destination_url="https://example.com/sponsor")
+
+
+def test_sponsorship_admin_accepts_github_checkout_destination() -> None:
+    option = SponsorshipOptionCreate(
+        slug="github-checkout",
+        title="GitHub checkout",
+        description="GitHub hosts the sponsorship checkout.",
+        kind="github_sponsors",
+        cta_label="Sponsor",
+        destination_url=("https://github.com/sponsors/example/sponsorships?tier_id=123"),
+    )
+
+    assert str(option.destination_url).startswith("https://github.com/sponsors/example/")
 
 
 def test_sponsorship_partial_amount_update_requires_currency_pair() -> None:

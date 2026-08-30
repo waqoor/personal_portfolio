@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from datetime import datetime
 from typing import Literal
+from urllib.parse import urlsplit
 
 from pydantic import (
     BaseModel,
@@ -18,6 +19,27 @@ from pydantic import (
 from packages.python.common.schemas import APIModel
 
 ContactCategory = Literal["general", "project", "collaboration", "speaking", "sponsorship", "other"]
+
+
+def is_github_sponsors_destination(value: str) -> bool:
+    """Return whether a sponsorship destination keeps checkout on GitHub Sponsors."""
+
+    try:
+        parsed = urlsplit(value)
+        path_segments = [segment for segment in parsed.path.split("/") if segment]
+        return (
+            parsed.scheme.casefold() == "https"
+            and parsed.hostname == "github.com"
+            and parsed.port in (None, 443)
+            and parsed.username is None
+            and parsed.password is None
+            and len(path_segments) >= 2
+            and path_segments[0].casefold() == "sponsors"
+            and path_segments[1] not in {".", ".."}
+        )
+    except ValueError:
+        return False
+
 
 class ContactRequest(BaseModel):
     model_config = ConfigDict(extra="forbid", str_strip_whitespace=True)
@@ -122,8 +144,8 @@ class SponsorshipOptionCreate(APIModel):
     @field_validator("destination_url")
     @classmethod
     def require_https_destination(cls, value: HttpUrl) -> HttpUrl:
-        if value.scheme != "https":
-            raise ValueError("sponsorship destinations must use HTTPS")
+        if not is_github_sponsors_destination(str(value)):
+            raise ValueError("sponsorship destinations must use a GitHub Sponsors HTTPS URL")
         return value
 
     @field_validator("currency")

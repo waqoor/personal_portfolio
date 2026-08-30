@@ -13,7 +13,7 @@ changing the application entry points.
 ## First deployment
 
 1. Copy `.env.example` to `.env` outside source control and replace every `CHANGE_ME` value. Use independent high-entropy values for the PostgreSQL password, authentication secret, and privacy hash secret. Keep the PostgreSQL password URL-safe because Compose interpolates it into the async database URL.
-2. Set `SITE_ADDRESS`, `HTTPS_REDIRECT_ORIGIN`, `PORTFOLIO_PUBLIC_BASE_URL`, allowed origins/hosts, cookie domain, and verified `sameAs` URLs to the real HTTPS host. `HTTPS_REDIRECT_ORIGIN` is the browser-visible HTTPS origin, including a non-standard port when one is published. Do not list a social profile until ownership has been verified.
+2. Set `SITE_ADDRESS`, `HTTPS_REDIRECT_ORIGIN`, `PORTFOLIO_PUBLIC_BASE_URL`, allowed origins/hosts, cookie domain, and verified `sameAs` URLs to the real HTTPS host. The default browser-visible edge port is `18444`; Caddy detects plaintext HTTP sent to that TLS port and redirects it to the canonical HTTPS URL on the same port. `HTTPS_REDIRECT_ORIGIN` must include it unless an upstream maps the deployment to standard port 443. Do not list a social profile until ownership has been verified.
 3. Validate and build:
 
    ```sh

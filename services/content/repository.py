@@ -11,6 +11,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import joinedload, load_only
 
 from packages.python.common.models import Base, PublicationStatus
+from packages.python.common.search import extract_search_terms
 from services.content.models import (
     Article,
     FeatureSetting,
@@ -248,7 +249,10 @@ class ContentRepository:
         return items, total
 
     async def search_public_articles(self, query: str, *, limit: int) -> Sequence[Article]:
-        pattern = f"%{query.strip()}%"
+        terms = extract_search_terms(query)
+        if not terms:
+            return []
+        searchable_fields = (Article.title, Article.excerpt, Article.body_markdown)
         statement = (
             select(Article)
             .where(
@@ -256,11 +260,7 @@ class ContentRepository:
                 Article.is_visible.is_(True),
                 Article.archived_at.is_(None),
                 Article.noindex.is_(False),
-                or_(
-                    Article.title.ilike(pattern),
-                    Article.excerpt.ilike(pattern),
-                    Article.body_markdown.ilike(pattern),
-                ),
+                or_(*(field.ilike(f"%{term}%") for term in terms for field in searchable_fields)),
             )
             .options(joinedload(Article.hero_media))
             .order_by(Article.published_at.desc(), Article.created_at.desc())

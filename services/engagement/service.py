@@ -8,7 +8,6 @@ import re
 import uuid
 from dataclasses import asdict, dataclass
 from datetime import UTC, datetime, timedelta
-from urllib.parse import urlsplit
 
 from packages.python.clients.email import ContactNotification, EmailClient
 from packages.python.common.errors import (
@@ -40,6 +39,7 @@ from services.engagement.schemas import (
     SponsorshipOptionResponse,
     SponsorshipOptionsResponse,
     SponsorshipOptionUpdate,
+    is_github_sponsors_destination,
 )
 
 logger = logging.getLogger(__name__)
@@ -320,8 +320,7 @@ class SponsorshipService:
         options = await self._repository.list_public_sponsorship_options()
         items: list[SponsorshipOptionResponse] = []
         for option in options:
-            parsed = urlsplit(option.destination_url)
-            if parsed.scheme != "https" or not parsed.netloc:
+            if not is_github_sponsors_destination(option.destination_url):
                 logger.warning(
                     "invalid_sponsorship_destination_skipped",
                     extra={"sponsorship_slug": option.slug},

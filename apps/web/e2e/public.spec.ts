@@ -29,6 +29,12 @@ test("public homepage renders canonical published content without draft leakage"
   await expect(page.getByText("Private Article Sentinel")).toHaveCount(0);
   await expect(page.getByRole("link", { name: /Verification Systems 1 published project/ })).toBeVisible();
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", /https?:\/\//);
+  const primaryLinks = page
+    .getByRole("navigation", { name: "Primary navigation" })
+    .getByRole("link");
+  await expect(primaryLinks).toHaveText(["Work", "Projects", "Achievements", "Sponsor"]);
+  await expect(page.getByRole("link", { name: "Contact Me" })).toBeVisible();
+  await expect(page.getByRole("link", { name: "About" })).toHaveCount(0);
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
   expect(overflow).toBeLessThanOrEqual(1);
   expect(failures).toEqual([]);
@@ -36,8 +42,9 @@ test("public homepage renders canonical published content without draft leakage"
 
 test("theme controls remain keyboard-operable and disabled assistant stays absent", async ({ page }) => {
   await page.goto("/");
-  await page.getByRole("button", { name: "Choose color theme" }).click();
-  await page.getByRole("menuitemradio", { name: "Dark" }).click();
+  await page.getByRole("button", { name: "Use dark theme" }).click();
+  await expect(page.locator("html")).toHaveClass(/dark/);
+  await page.reload();
   await expect(page.locator("html")).toHaveClass(/dark/);
 
   await expect(page.getByRole("button", { name: "Ask my portfolio AI" })).toHaveCount(0);
@@ -58,6 +65,34 @@ test("project archive, deep case study, writing, and 404 stay semantic", async (
 
   await page.goto("/not-a-published-route");
   await expect(page.getByRole("heading", { level: 1, name: "The trail ends here." })).toBeVisible();
+});
+
+test("public profile chapters render their published evidence without runtime failures", async ({ page }) => {
+  const failures = collectRuntimeFailures(page);
+  const chapters = [
+    ["/achievements", "Achievements"],
+    ["/work", "Work"],
+    ["/open-source", "Open source"],
+    ["/sectors", "Sectors"],
+    ["/writing", "Writing"],
+  ] as const;
+
+  for (const [path, heading] of chapters) {
+    const response = await page.goto(path);
+    expect(response?.status(), path).toBe(200);
+    await expect(page.getByRole("heading", { level: 1, name: heading })).toBeVisible();
+    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", `${canonicalOrigin}${path}`);
+  }
+
+  expect(failures).toEqual([]);
+});
+
+test("retired about route permanently consolidates into the homepage", async ({ page }) => {
+  const response = await page.goto("/about");
+  expect(response?.status()).toBe(200);
+  await expect(page).toHaveURL(/\/#leadership-approach$/);
+  await expect(page.getByRole("heading", { level: 1, name: expectedName })).toBeVisible();
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", `${canonicalOrigin}/`);
 });
 
 test("stable résumé route returns the current managed PDF", async ({ page }) => {
@@ -83,6 +118,53 @@ test("contact workflow preserves a clear success state", async ({ page }) => {
   await expect(page.getByText("Message received")).toBeVisible();
 });
 
+test("sponsor page keeps checkout on GitHub and submits a sponsorship inquiry", async ({ page }) => {
+  await page.goto("/sponsor");
+  await expect(
+    page.getByRole("heading", { level: 2, name: "Support through GitHub Sponsors" }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("heading", { level: 2, name: "Contact me about sponsorship" }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("navigation", { name: "Primary navigation" }).getByRole("link", {
+      name: "Sponsor",
+    }),
+  ).toBeVisible();
+
+  const checkout = page.getByRole("link", { name: "Open GitHub Sponsors" });
+  await expect(checkout).toHaveAttribute(
+    "href",
+    "https://github.com/sponsors/yazeedhasan97",
+  );
+  await expect(checkout).toHaveAttribute("target", "_blank");
+  await expect(checkout).toHaveAttribute(
+    "rel",
+    "sponsored nofollow noopener noreferrer",
+  );
+  await expect(
+    page.getByText(/this website never receives, processes, or stores them/i),
+  ).toBeVisible();
+
+  const email = page.getByRole("link", { name: "Email about sponsorship" });
+  await expect(email).toHaveAttribute(
+    "href",
+    /^mailto:sponsor@example\.com\?subject=Sponsorship%20inquiry&body=.*%0D%0A/,
+  );
+  await expect(page.locator('select[name="category_id"]')).toHaveValue("sponsorship");
+
+  await page.getByLabel(/Name/).fill("Sponsor Path Check");
+  await page.getByLabel(/Email/).fill(`sponsor-${Date.now()}@example.com`);
+  await page.getByLabel(/Organization/).fill("Synthetic Sponsor Lab");
+  await page.getByLabel(/Subject/).fill("Open-source maintenance sponsorship");
+  await page
+    .getByLabel(/Context/)
+    .fill("This inquiry verifies the existing sponsorship contact path without sending payment data.");
+  await page.getByRole("checkbox").check();
+  await page.getByRole("button", { name: "Send sponsorship inquiry" }).click();
+  await expect(page.getByText("Message received")).toBeVisible();
+});
+
 test("critical public pages have no serious automated accessibility violations", async ({ page }) => {
   for (const path of [
     "/",
@@ -90,6 +172,7 @@ test("critical public pages have no serious automated accessibility violations",
     "/projects/canonical-service-verification",
     "/writing/testing-the-canonical-path",
     "/contact",
+    "/sponsor",
   ]) {
     await page.goto(path);
     const results = await new AxeBuilder({ page }).analyze();
@@ -193,6 +276,15 @@ test("mobile layout preserves content and avoids horizontal overflow", async ({ 
     () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
   );
   expect(overflow).toBeLessThanOrEqual(1);
+
+  await page.goto("/sponsor");
+  await expect(
+    page.getByRole("heading", { level: 2, name: "Support through GitHub Sponsors" }),
+  ).toBeVisible();
+  const sponsorOverflow = await page.evaluate(
+    () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
+  );
+  expect(sponsorOverflow).toBeLessThanOrEqual(1);
   await context.close();
 });
 

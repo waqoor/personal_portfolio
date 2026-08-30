@@ -31,6 +31,7 @@ class PageMetadata(BaseModel):
     description: str
     canonical_url: str
     robots: str
+    keywords: list[str]
     open_graph: OpenGraphMetadata
     twitter: SocialMetadata
 

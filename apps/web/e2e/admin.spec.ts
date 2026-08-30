@@ -158,7 +158,9 @@ test("authenticated CMS changes flow through canonical services and public disco
     await sponsorDialog.getByLabel("Description").fill("Synthetic published sponsorship used only for the canonical E2E journey.");
     await sponsorDialog.getByLabel("Kind").fill("external");
     await sponsorDialog.getByLabel("CTA label").fill("Open verification sponsor");
-    await sponsorDialog.getByLabel("HTTPS destination").fill("https://example.com/e2e-sponsor");
+    await sponsorDialog
+      .getByLabel("GitHub Sponsors URL")
+      .fill("https://github.com/sponsors/e2e-verification");
     await sponsorDialog.getByLabel("Display order").fill("1");
     await sponsorDialog.getByLabel("Published").check();
     await sponsorDialog.getByLabel("Mark link sponsored/nofollow").check();
@@ -187,13 +189,22 @@ test("authenticated CMS changes flow through canonical services and public disco
     expect((await (await request.get("/api/v1/sponsorship")).json()).items).toEqual([]);
     expect(await (await request.get("/sitemap.xml")).text()).toContain(`${CANONICAL_ORIGIN}/sponsor`);
     await page.goto("/sponsorship");
-    await expect(page.getByRole("heading", { name: "The gateway is intentionally not guessed." })).toBeVisible();
+    await expect(page.getByRole("link", { name: "Open verification sponsor" })).toHaveCount(0);
+    await expect(page.getByRole("link", { name: "Open GitHub Sponsors" })).toHaveAttribute(
+      "href",
+      "https://github.com/sponsors/yazeedhasan97",
+    );
   } finally {
     createdSponsorId ??= await sponsorshipId(request, sponsorTitle);
     if (createdSponsorId) {
-      await request.delete(`/api/v1/admin/engagement/sponsorship/${createdSponsorId}`, {
+      const cleanup = await request.delete(`/api/v1/admin/engagement/sponsorship/${createdSponsorId}`, {
         headers: await csrfHeaders(page.context()),
       });
+      expect(cleanup.ok()).toBe(true);
+      const revalidated = await request.post("/admin/revalidate-public", {
+        headers: await csrfHeaders(page.context()),
+      });
+      expect(revalidated.status()).toBe(204);
     }
   }
 });

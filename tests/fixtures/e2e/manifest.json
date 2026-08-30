@@ -11,6 +11,7 @@
           "short_bio": "Fictional content used only to verify the repository's production paths end to end.",
           "long_bio": "This profile is intentionally synthetic. It proves publication, discovery, administration, and rendering behavior without making claims about a real person.",
           "public_location": "Test environment",
+          "public_email": "sponsor@example.com",
           "availability_status": "selective",
           "availability_detail": "Test inquiries are accepted for automated verification.",
           "primary_cta_label": "Review verification project",
@@ -224,11 +225,10 @@
       { "seed_key": "e2e.section.contact", "payload": { "section_type": "contact", "position": 7, "variant": "default", "feature_key": "contact", "status": "published" } }
     ],
     "navigation": [
-      { "seed_key": "e2e.nav.work", "payload": { "label": "Work", "href": "/projects", "sort_order": 1, "status": "published" } },
-      { "seed_key": "e2e.nav.about", "payload": { "label": "About", "href": "/about", "sort_order": 2, "status": "published" } },
-      { "seed_key": "e2e.nav.sectors", "payload": { "label": "Sectors", "href": "/sectors", "sort_order": 3, "status": "published" } },
-      { "seed_key": "e2e.nav.writing", "payload": { "label": "Writing", "href": "/writing", "sort_order": 4, "status": "published" } },
-      { "seed_key": "e2e.nav.contact", "payload": { "label": "Contact", "href": "/contact", "sort_order": 5, "status": "published" } }
+      { "seed_key": "e2e.nav.work", "payload": { "label": "Work", "href": "/work", "sort_order": 0, "status": "published" } },
+      { "seed_key": "e2e.nav.projects", "payload": { "label": "Projects", "href": "/projects", "sort_order": 1, "status": "published" } },
+      { "seed_key": "e2e.nav.achievements", "payload": { "label": "Achievements", "href": "/achievements", "sort_order": 2, "status": "published" } },
+      { "seed_key": "e2e.nav.sponsor", "payload": { "label": "Sponsor", "href": "/sponsor", "sort_order": 3, "status": "published" } }
     ],
     "features": [
       { "seed_key": "e2e.feature.work", "payload": { "key": "projects", "enabled": true, "description": "Expose published work." } },

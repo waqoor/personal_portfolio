@@ -4,9 +4,9 @@ import { getPublicApi } from "@/lib/api";
 
 export function siteUrl(): URL {
   try {
-    return new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000");
+    return new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:18444");
   } catch {
-    return new URL("http://localhost:3000");
+    return new URL("http://localhost:18444");
   }
 }
 
@@ -41,11 +41,16 @@ export function metadataFromSeo(seo: Seo, path?: string): Metadata {
 export function metadataFromDiscovery(page: DiscoveryPage): Metadata {
   const { metadata } = page;
   const robots = metadata.robots.toLocaleLowerCase();
-  const openGraphType = metadata.open_graph.type === "article" ? "article" : "website";
+  const openGraphType = metadata.open_graph.type === "article"
+    ? "article"
+    : metadata.open_graph.type === "profile"
+      ? "profile"
+      : "website";
   const twitterCard = metadata.twitter.card === "summary_large_image" ? "summary_large_image" : "summary";
   return {
     title: { absolute: metadata.title },
     description: metadata.description,
+    keywords: metadata.keywords,
     alternates: { canonical: metadata.canonical_url },
     robots: {
       index: !robots.includes("noindex"),

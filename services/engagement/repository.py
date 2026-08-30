@@ -492,6 +492,8 @@ class SQLAlchemyEngagementRepository:
                 raise ConflictError("A sponsorship option with this slug already exists.") from exc
             await session.refresh(model)
         return _to_admin_sponsorship(model)
+
+
 def _to_stored_contact(model: ContactSubmission) -> StoredContactSubmission:
     return StoredContactSubmission(
         id=model.id,

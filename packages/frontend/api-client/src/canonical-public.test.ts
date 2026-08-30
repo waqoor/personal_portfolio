@@ -4,6 +4,7 @@ import {
   mapProjectDetail,
   mapSiteShell,
   rawHomepageSchema,
+  rawProfileSchema,
   rawProjectSchema,
   rawProjectSummarySchema,
 } from "./canonical-public";
@@ -211,6 +212,74 @@ describe("canonical public configuration", () => {
     ]);
   });
 
+  it("maps the primary managed portrait into the site shell brand", () => {
+    const raw = homepage();
+    const shell = mapSiteShell({
+      ...raw,
+      profile: rawProfileSchema.parse({
+        id: "profile-1",
+        created_at: now,
+        updated_at: now,
+        status: "published",
+        is_visible: true,
+        noindex: false,
+        published_at: now,
+        archived_at: null,
+        full_name: "Yazeed Hasan",
+        headline: "AI & Data Technical Leader",
+        short_bio: "Source-backed professional profile.",
+        long_bio: null,
+        public_location: "Amman, Jordan",
+        availability_status: "selective",
+        availability_detail: null,
+        public_email: null,
+        primary_cta_label: null,
+        primary_cta_url: null,
+        secondary_cta_label: null,
+        secondary_cta_url: null,
+        portraits: [
+          {
+            id: "portrait-secondary",
+            created_at: now,
+            updated_at: now,
+            original_filename: "secondary.png",
+            media_type: "image/png",
+            size_bytes: 512,
+            alt_text: "Secondary portrait",
+            width: 500,
+            height: 500,
+            is_primary: false,
+            is_active: true,
+            sort_order: 0,
+          },
+          {
+            id: "portrait-primary",
+            created_at: now,
+            updated_at: now,
+            original_filename: "primary.png",
+            media_type: "image/png",
+            size_bytes: 1024,
+            alt_text: "Primary portrait",
+            width: 800,
+            height: 800,
+            is_primary: true,
+            is_active: true,
+            sort_order: 10,
+          },
+        ],
+        social_links: [],
+      }),
+    });
+
+    expect(shell.brand_logo).toEqual(
+      expect.objectContaining({
+        id: "portrait-primary",
+        url: "/api/v1/public/portraits/portrait-primary",
+        alt: "Primary portrait",
+      }),
+    );
+  });
+
   it("loads canonical presentation settings for the standalone sponsorship page", async () => {
     const presentation = homepage().site_presentation;
     const get = vi.fn(async (path: string) => {
@@ -224,7 +293,7 @@ describe("canonical public configuration", () => {
               description: "Provider-owned option description.",
               kind: "external",
               cta_label: "Sponsor public work",
-              destination_url: "https://example.com/sponsor",
+              destination_url: "https://github.com/sponsors/example",
               amount_minor: null,
               currency: null,
               recurrence: null,

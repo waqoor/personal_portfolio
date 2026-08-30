@@ -9,6 +9,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import joinedload, load_only, selectinload
 
 from packages.python.common.models import Base, PublicationStatus
+from packages.python.common.search import extract_search_terms
 from services.portfolio.models import (
     Certification,
     Education,
@@ -452,7 +453,17 @@ class PortfolioRepository:
         return items, total
 
     async def search_public_project_details(self, query: str, *, limit: int) -> Sequence[Project]:
-        pattern = f"%{query.strip()}%"
+        terms = extract_search_terms(query)
+        if not terms:
+            return []
+        searchable_fields = (
+            Project.title,
+            Project.summary,
+            Project.description,
+            Project.problem,
+            Project.solution,
+            Project.architecture,
+        )
         statement = (
             select(Project)
             .where(
@@ -460,14 +471,7 @@ class PortfolioRepository:
                 Project.is_visible.is_(True),
                 Project.archived_at.is_(None),
                 Project.noindex.is_(False),
-                or_(
-                    Project.title.ilike(pattern),
-                    Project.summary.ilike(pattern),
-                    Project.description.ilike(pattern),
-                    Project.problem.ilike(pattern),
-                    Project.solution.ilike(pattern),
-                    Project.architecture.ilike(pattern),
-                ),
+                or_(*(field.ilike(f"%{term}%") for term in terms for field in searchable_fields)),
             )
             .options(*self._project_options())
             .order_by(

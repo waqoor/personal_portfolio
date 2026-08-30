@@ -1,0 +1,63 @@
+{
+	auto_https disable_redirects
+	servers :443 {
+		listener_wrappers {
+			http_redirect
+			tls
+		}
+	}
+}
+
+:80 {
+	redir {$HTTPS_REDIRECT_ORIGIN:https://localhost}{uri} 308
+}
+
+{$SITE_ADDRESS:https://localhost} {
+	encode zstd gzip
+
+	@secure protocol https
+	header @secure Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
+
+	header {
+		-Server
+		X-Content-Type-Options "nosniff"
+		X-Frame-Options "DENY"
+		Referrer-Policy "strict-origin-when-cross-origin"
+		Permissions-Policy "camera=(), microphone=(), geolocation=()"
+		Cross-Origin-Opener-Policy "same-origin"
+		Content-Security-Policy "{$EDGE_CONTENT_SECURITY_POLICY}"
+	}
+
+	handle /healthz {
+		respond "ok" 200
+	}
+
+	handle /api/* {
+		reverse_proxy api:8000
+	}
+
+	handle /health/* {
+		reverse_proxy api:8000
+	}
+
+	handle /sitemap.xml {
+		reverse_proxy api:8000
+	}
+
+	handle /robots.txt {
+		reverse_proxy api:8000
+	}
+
+	handle /llms.txt {
+		reverse_proxy api:8000
+	}
+
+	handle {
+		reverse_proxy web:3000
+	}
+
+	log {
+		output stdout
+		format json
+	}
+}

@@ -56,7 +56,7 @@ uvicorn apps.api.main:app --reload --port 8000
 npm run dev
 ```
 
-The web app runs on `http://localhost:3000`; FastAPI runs on `http://localhost:8000`. The browser
+The standalone development web app runs on `http://localhost:3000`; FastAPI runs on `http://localhost:8000`. The local Compose profile uses `PORTFOLIO_ENVIRONMENT=development` and is available directly at `http://localhost:18444` without requiring a locally trusted certificate. Production configuration keeps HTTPS termination and secure cookies; its TLS port remains configurable through `HTTPS_PORT`. The browser
 uses only the typed API client. API documentation is enabled in development at `/docs` and disabled
 in production by default.
 
@@ -115,12 +115,13 @@ portfolio-seed dry-run --file yazeed.portfolio.manifest.json
 portfolio-seed apply --file yazeed.portfolio.manifest.json --approve
 ```
 
-The admin dashboard maps the five public chapters to their canonical content areas. About is
-managed through profiles, portraits, resumes, social links, skills, and education; Achievements
-through credentials and writing; Work through experience; Projects through projects; and Sponsor
-through sponsorship and contact submissions. The Sponsor page remains available for
-purpose-specific inquiries while direct gateway options are intentionally unconfigured. Add only
-reviewed payment destinations in `/admin/sponsorship` when those details are supplied.
+The public header exposes Work, Projects, Achievements, and Sponsor; the profile, leadership
+approach, skills, education, and resume are consolidated into the homepage. The admin dashboard
+manages those records through profiles, portraits, resumes, social links, skills, education,
+credentials, writing, experience, projects, sponsorship, and contact submissions. The Sponsor page provides a GitHub Sponsors link, a
+pre-addressed email path, and the existing private contact workflow. Any managed sponsorship
+destination must remain on GitHub Sponsors; payment and card details are never collected,
+processed, or stored by this application.
 
 Publication is compositional: public children require every populated parent to be public, evidence
 approvals are tied to an immutable content/evidence hash, and only evidence deliberately marked
@@ -167,6 +168,9 @@ docker compose build --pull
 docker compose up -d
 docker compose ps
 ```
+
+The checked-in local defaults expose the browser-visible edge at `http://localhost:18444`. The production environment template instead assigns port `18444` to HTTPS and redirects accidental plaintext requests on that TLS listener. Internal Next.js
+and FastAPI ports remain private to the Compose network.
 
 Only Caddy publishes host ports. PostgreSQL, FastAPI, and Next.js remain on the internal network;
 migrations and media ownership initialization must succeed before application readiness. Complete

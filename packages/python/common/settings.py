@@ -44,9 +44,9 @@ class Settings(BaseSettings):
     admin_email: EmailStr | None = None
     admin_password: SecretStr | None = None
 
-    public_base_url: str = "http://localhost:3000"
-    api_public_url: str = "http://localhost:8000"
-    allowed_origins: list[str] = Field(default_factory=lambda: ["http://localhost:3000"])
+    public_base_url: str = "http://localhost:18444"
+    api_public_url: str = "http://localhost:18444"
+    allowed_origins: list[str] = Field(default_factory=lambda: ["http://localhost:18444"])
     allowed_hosts: list[str] = Field(
         default_factory=lambda: ["localhost", "127.0.0.1", "testserver"]
     )
@@ -57,9 +57,14 @@ class Settings(BaseSettings):
 
     site_name: str = "Yazeed Hasan"
     site_owner_name: str = "Yazeed Hasan"
-    site_owner_headline: str = "AI, Software, Data & Infrastructure Builder"
-    site_default_title: str = "Yazeed Hasan — AI, Software, Data & Infrastructure"
-    site_description: str = "Portfolio of AI, software, data, and infrastructure work."
+    site_owner_headline: str = (
+        "AI & Data Technical Leader | Enterprise AI/ML, Data Platforms, MLOps, Strategy & Delivery"
+    )
+    site_default_title: str = "Yazeed Hasan — AI & Data Technical Leader"
+    site_description: str = (
+        "Enterprise AI/ML, data platforms, MLOps, strategy, technical leadership, "
+        "and accountable delivery by Yazeed Hasan."
+    )
     site_locale: str = "en_US"
     site_language: str = "en"
     site_social_image_url: str | None = None

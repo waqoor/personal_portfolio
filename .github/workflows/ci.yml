@@ -108,10 +108,10 @@ jobs:
       POSTGRES_PASSWORD: ci-db-credential-2026-strong
       SITE_ADDRESS: https://localhost
       HTTP_PORT: "18080"
-      HTTPS_PORT: "18443"
-      HTTPS_UDP_PORT: "18443"
+      HTTPS_PORT: "18444"
+      HTTPS_UDP_PORT: "18444"
       IMAGE_TAG: ci-${{ github.sha }}
-      PORTFOLIO_E2E_BASE_URL: https://localhost:18443
+      PORTFOLIO_E2E_BASE_URL: https://localhost:18444
       PORTFOLIO_E2E_EXPECTED_NAME: Integration Test Portfolio
       PORTFOLIO_E2E_ADMIN_EMAIL: e2e-owner@example.com
       PORTFOLIO_E2E_ADMIN_PASSWORD: Ci-E2e-Owner-2026!
@@ -151,7 +151,7 @@ jobs:
       - name: Wait for edge and API readiness
         run: |
           for attempt in $(seq 1 60); do
-            if curl --fail --silent --show-error --insecure https://localhost:18443/health/ready; then
+            if curl --fail --silent --show-error --insecure https://localhost:18444/health/ready; then
               exit 0
             fi
             sleep 5
@@ -187,7 +187,7 @@ jobs:
       - name: Wait for restored topology
         run: |
           for attempt in $(seq 1 60); do
-            if curl --fail --silent --show-error --insecure https://localhost:18443/health/ready; then
+            if curl --fail --silent --show-error --insecure https://localhost:18444/health/ready; then
               exit 0
             fi
             sleep 5

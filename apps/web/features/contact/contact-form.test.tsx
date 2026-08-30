@@ -42,6 +42,23 @@ describe("ContactForm", () => {
     expect(screen.queryByRole("button", { name: /Send inquiry/ })).not.toBeInTheDocument();
   });
 
+  it("preselects the sponsorship category for the sponsor page", () => {
+    render(
+      <ContactForm
+        options={fixtureContactOptions}
+        defaultCategoryId="sponsorship"
+        submitLabel="Send sponsorship inquiry"
+      />,
+    );
+
+    expect(
+      document.querySelector<HTMLSelectElement>('select[name="category_id"]'),
+    ).toHaveValue("sponsorship");
+    expect(
+      screen.getByRole("button", { name: "Send sponsorship inquiry" }),
+    ).toBeInTheDocument();
+  });
+
   it("submits validated data and renders the server receipt", async () => {
     submitContact.mockResolvedValue({
       reference_id: "contact-1",

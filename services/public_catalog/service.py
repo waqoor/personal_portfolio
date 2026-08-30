@@ -4,11 +4,13 @@ from __future__ import annotations
 
 import asyncio
 import re
+from collections.abc import Iterable
 from dataclasses import dataclass, replace
 from datetime import datetime
 from urllib.parse import quote
 from uuid import UUID
 
+from packages.python.common.search import extract_search_terms
 from packages.python.common.settings import Settings
 from packages.python.common.urls import CanonicalUrlPolicy
 from packages.python.contracts.features import FeatureFlagReader, FeatureResolution
@@ -36,23 +38,19 @@ from services.portfolio.schemas import (
     SectorRead,
 )
 
-_WORD_PATTERN = re.compile(r"[a-z0-9][a-z0-9+#.-]{1,}", re.IGNORECASE)
 _MARKDOWN_CONTROL = re.compile(r"[`*_>#|]+")
 _SPACE = re.compile(r"\s+")
-_STOP_WORDS = {
-    "about",
-    "and",
-    "are",
-    "can",
-    "for",
-    "from",
-    "how",
-    "the",
-    "their",
-    "this",
-    "what",
-    "with",
-    "you",
+_CONTENT_TYPE_QUERY_TERMS = {
+    "approved_testimonial": frozenset({"feedback", "quote", "testimonial", "testimonials"}),
+    "article": frozenset({"article", "articles", "blog", "post", "writing", "written", "wrote"}),
+    "experience": frozenset({"career", "experience", "job", "role", "roles", "worked"}),
+    "metric": frozenset(
+        {"impact", "metric", "metrics", "outcome", "outcomes", "result", "results"}
+    ),
+    "profile": frozenset({"bio", "biography", "headline", "location", "profile"}),
+    "project": frozenset({"build", "built", "case-study", "project", "projects"}),
+    "sector": frozenset({"domain", "domains", "industries", "industry", "sector", "sectors"}),
+    "skill": frozenset({"skill", "skills", "stack", "technology", "tool", "tools"}),
 }
 
 
@@ -109,17 +107,12 @@ class CanonicalPublicContentProvider(
             limit=max(50, min(limit * 10, 200)),
             query=query,
         )
-        terms = _query_terms(query)
+        terms = set(extract_search_terms(query, max_terms=20))
         if not terms:
             return []
         ranked: list[PublishedContentDocument] = []
         for document in self._assistant_documents(snapshot):
-            title = document.title.casefold()
-            excerpt = document.excerpt.casefold()
-            score = float(
-                sum(4 for term in terms if term in title)
-                + sum(excerpt.count(term) for term in terms)
-            )
+            score = _document_relevance(document, terms)
             if score > 0:
                 ranked.append(replace(document, relevance=score))
         return sorted(ranked, key=lambda item: item.relevance, reverse=True)[:limit]
@@ -207,17 +200,15 @@ class CanonicalPublicContentProvider(
                     source_id=f"profile:{profile.id}",
                     content_type="profile",
                     title=f"{profile.full_name} — {profile.headline}",
-                    excerpt=_plain_text(
-                        " ".join(
-                            part
-                            for part in (
-                                profile.headline,
-                                profile.short_bio,
-                                profile.long_bio,
-                                profile.public_location,
-                            )
-                            if part
+                    excerpt=_plain_text_parts(
+                        part
+                        for part in (
+                            profile.headline,
+                            profile.short_bio,
+                            profile.long_bio,
+                            profile.public_location,
                         )
+                        if part
                     ),
                     canonical_url=self._canonical.build("/"),
                     published_at=profile.published_at,
@@ -249,7 +240,7 @@ class CanonicalPublicContentProvider(
                     source_id=f"project:{project.id}",
                     content_type="project",
                     title=project.title,
-                    excerpt=_plain_text(" ".join(project_parts)),
+                    excerpt=_plain_text_parts(project_parts),
                     canonical_url=self._canonical.build(f"/projects/{project.slug}"),
                     published_at=project.published_at,
                     is_indexable=not project.noindex,
@@ -260,9 +251,13 @@ class CanonicalPublicContentProvider(
                 source_id=f"article:{article.id}",
                 content_type="article",
                 title=article.title,
-                excerpt=_plain_text(
-                    f"{article.excerpt} "
-                    f"{article.body_markdown if isinstance(article, PublicArticleRead) else ''}"
+                excerpt=_plain_text_parts(
+                    (
+                        article.excerpt,
+                        _plain_markdown(article.body_markdown),
+                    )
+                    if isinstance(article, PublicArticleRead)
+                    else (article.excerpt,)
                 ),
                 canonical_url=self._canonical.build(f"/writing/{article.slug}"),
                 published_at=article.published_at,
@@ -281,22 +276,20 @@ class CanonicalPublicContentProvider(
                 source_id=f"skill:{skill.id}",
                 content_type="skill",
                 title=skill.name,
-                excerpt=_plain_text(
-                    " ".join(
-                        part
-                        for part in (
-                            skill.description,
-                            skill.proficiency_label,
-                            (
-                                f"{skill.years_experience} years of experience"
-                                if skill.years_experience is not None
-                                else None
-                            ),
-                        )
-                        if part
+                excerpt=_plain_text_parts(
+                    part
+                    for part in (
+                        skill.description,
+                        skill.proficiency_label,
+                        (
+                            f"{skill.years_experience} years of experience"
+                            if skill.years_experience is not None
+                            else None
+                        ),
                     )
+                    if part
                 ),
-                canonical_url=self._canonical.build("/about"),
+                canonical_url=self._canonical.build("/"),
                 published_at=skill.published_at,
                 is_indexable=not skill.noindex,
             )
@@ -319,7 +312,7 @@ class CanonicalPublicContentProvider(
                 source_id=f"experience:{experience.id}",
                 content_type="experience",
                 title=f"{experience.role} at {experience.organization}",
-                excerpt=_plain_text(" ".join((experience.summary, *experience.achievements))),
+                excerpt=_plain_text_parts((experience.summary, *experience.achievements)),
                 canonical_url=self._canonical.build("/work"),
                 published_at=experience.published_at,
                 is_indexable=not experience.noindex,
@@ -367,6 +360,24 @@ class CanonicalPublicContentProvider(
                     verified_same_as_urls=tuple(
                         sorted(configured_verified.intersection(public_social_urls))
                     ),
+                    keywords=tuple(
+                        dict.fromkeys(
+                            [
+                                *(skill.name for skill in snapshot.skills),
+                                *(category.name for category in snapshot.categories),
+                                *(sector.name for sector in snapshot.sectors),
+                            ]
+                        )
+                    ),
+                    related_paths=(
+                        "/work",
+                        "/projects",
+                        "/achievements",
+                        "/sectors",
+                        "/writing",
+                        "/open-source",
+                        "/sponsor",
+                    ),
                     noindex=profile.noindex,
                 )
             )
@@ -409,7 +420,7 @@ class CanonicalPublicContentProvider(
                     related_paths=tuple(
                         dict.fromkeys(
                             (
-                                "/about",
+                                "/",
                                 "/achievements",
                                 "/work",
                                 "/sectors",
@@ -436,7 +447,7 @@ class CanonicalPublicContentProvider(
                 author_name=author_name,
                 keywords=tuple(article.topics),
                 breadcrumbs=(DiscoveryBreadcrumb(label="Writing", path="/writing"),),
-                related_paths=("/projects", "/about"),
+                related_paths=("/projects", "/"),
                 noindex=article.noindex,
             )
             for article in snapshot.articles
@@ -516,22 +527,6 @@ def _collection_documents(
                 [sector.updated_at for sector in snapshot.sectors],
             )
         )
-    about_parts = [
-        *(item.description or item.name for item in snapshot.skills),
-        *(item.summary for item in snapshot.experiences),
-        *(item.summary or item.credential for item in snapshot.education),
-        *(item.description or f"{item.name}, {item.issuer}" for item in snapshot.certifications),
-        *(item.description for item in snapshot.categories),
-    ]
-    about_updates = [
-        *(item.updated_at for item in snapshot.skills),
-        *(item.updated_at for item in snapshot.experiences),
-        *(item.updated_at for item in snapshot.education),
-        *(item.updated_at for item in snapshot.certifications),
-        *(item.updated_at for item in snapshot.categories),
-    ]
-    if about_parts:
-        definitions.append(("collection:about", "/about", "About", about_parts[:20], about_updates))
     if snapshot.experiences:
         definitions.append(
             (
@@ -583,6 +578,16 @@ def _collection_documents(
                 [project.updated_at for project in open_source_projects],
             )
         )
+    collection_paths = tuple(path for _, path, _, _, _ in definitions)
+    collection_keywords = tuple(
+        dict.fromkeys(
+            [
+                *(skill.name for skill in snapshot.skills),
+                *(category.name for category in snapshot.categories),
+                *(sector.name for sector in snapshot.sectors),
+            ]
+        )
+    )
     return [
         DiscoveryDocument(
             source_id=source_id,
@@ -592,7 +597,9 @@ def _collection_documents(
             description=_plain_text(" ".join(parts))[:320],
             modified_at=max(updated_values) if updated_values else None,
             author_name=author_name,
+            keywords=collection_keywords,
             breadcrumbs=(DiscoveryBreadcrumb(label=title, path=path),),
+            related_paths=("/", *(item for item in collection_paths if item != path)),
         )
         for source_id, path, title, parts, updated_values in definitions
     ]
@@ -649,13 +656,33 @@ def _testimonial_document(
     )
 
 
-def _query_terms(query: str) -> set[str]:
-    return {
-        term.casefold()
-        for term in _WORD_PATTERN.findall(query)
-        if term.casefold() not in _STOP_WORDS
-    }
-
-
 def _plain_text(value: str) -> str:
     return _SPACE.sub(" ", _MARKDOWN_CONTROL.sub(" ", value)).strip()[:12_000]
+
+
+def _plain_text_parts(parts: Iterable[str]) -> str:
+    sentences: list[str] = []
+    for part in parts:
+        clean_part = _plain_text(part)
+        if not clean_part:
+            continue
+        sentences.append(
+            clean_part if clean_part.endswith((".", "!", "?", ":", ";")) else f"{clean_part}."
+        )
+    return _plain_text(" ".join(sentences))
+
+
+def _plain_markdown(value: str) -> str:
+    return _plain_text_parts(re.split(r"(?:\r?\n){2,}", value))
+
+
+def _document_relevance(document: PublishedContentDocument, terms: set[str]) -> float:
+    title = document.title.casefold()
+    excerpt = document.excerpt.casefold()
+    intent_terms = _CONTENT_TYPE_QUERY_TERMS.get(document.content_type, frozenset())
+    intent_bonus = 12 if terms.intersection(intent_terms) else 0
+    return float(
+        intent_bonus
+        + sum(4 for term in terms if term in title)
+        + sum(excerpt.count(term) for term in terms)
+    )

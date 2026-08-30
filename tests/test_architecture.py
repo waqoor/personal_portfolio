@@ -130,3 +130,22 @@ def test_frontend_cache_invalidation_has_a_writable_production_route() -> None:
         'export const dynamic = "force-dynamic"' in path.read_text(encoding="utf-8")
         for path in runtime_fallbacks
     )
+
+
+def test_production_compose_bind_sources_are_repository_files() -> None:
+    """A missing bind source becomes a directory and prevents container startup."""
+
+    compose = (ROOT / "docker-compose.yml").read_text(encoding="utf-8")
+    required_files = {
+        "./deploy/Caddyfile:/etc/caddy/Caddyfile:ro": ROOT / "deploy" / "Caddyfile",
+    }
+    required_directories = {
+        "./deploy/scripts:/scripts:ro": ROOT / "deploy" / "scripts",
+    }
+
+    for binding, source in required_files.items():
+        assert binding in compose
+        assert source.is_file()
+    for binding, source in required_directories.items():
+        assert binding in compose
+        assert source.is_dir()

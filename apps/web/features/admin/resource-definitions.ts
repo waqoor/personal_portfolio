@@ -406,7 +406,7 @@ export const RESOURCE_DEFINITIONS: Partial<Record<AdminResource, AdminResourceDe
   sponsorship: {
     label: "Sponsorship",
     singular: "sponsorship option",
-    description: "Manage the canonical sponsorship options exposed by the public sponsorship service.",
+    description: "Manage GitHub Sponsors destinations exposed by the public sponsorship service.",
     supportsPublication: true,
     createEnabled: true,
     editEnabled: true,
@@ -418,7 +418,7 @@ export const RESOURCE_DEFINITIONS: Partial<Record<AdminResource, AdminResourceDe
       { key: "description", label: "Description", type: "textarea", required: true },
       { key: "kind", label: "Kind", type: "text", required: true },
       { key: "cta_label", label: "CTA label", type: "text", required: true },
-      { key: "destination_url", label: "HTTPS destination", type: "url", required: true },
+      { key: "destination_url", label: "GitHub Sponsors URL", type: "url", required: true, placeholder: "https://github.com/sponsors/yazeedhasan97" },
       { key: "amount_minor", label: "Amount (minor units)", type: "number", min: 0 },
       { key: "currency", label: "Currency", type: "text" },
       { key: "recurrence", label: "Recurrence", type: "select", options: [{ label: "One time", value: "one_time" }, { label: "Monthly", value: "monthly" }, { label: "Yearly", value: "yearly" }] },

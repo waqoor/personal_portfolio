@@ -27,6 +27,8 @@ _MAX_CONFIGURATION_BYTES = 32 * 1024
 _MAX_CONFIGURATION_DEPTH = 8
 _MAX_CONFIGURATION_ITEMS = 500
 _LEGACY_SITE_PRESENTATION_KEYS = frozenset({"analytics_enabled", "site_url", "timezone"})
+
+
 def validate_public_configuration(value: dict[str, Any]) -> dict[str, Any]:
     """Bound public configuration and reject values that resemble credentials."""
 
@@ -393,6 +395,7 @@ class SitePresentationSettings(APIModel):
         min_length=1,
         max_length=8,
     )
+
     @field_validator("sponsorship_principles")
     @classmethod
     def validate_principles(cls, values: list[str]) -> list[str]:

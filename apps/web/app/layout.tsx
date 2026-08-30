@@ -32,9 +32,14 @@ const monoFont = IBM_Plex_Mono({
 
 export const metadata: Metadata = {
   metadataBase: siteUrl(),
-  title: { default: "Yazeed Hasan", template: "%s · Yazeed Hasan" },
+  title: { default: "Yazeed Hasan — AI & Data Technical Leader", template: "%s · Yazeed Hasan" },
   description:
-    "Yazeed Hasan's work across AI engineering, data platforms, MLOps, technical leadership, and owned products.",
+    "Enterprise AI/ML, data platforms, MLOps, strategy, technical leadership, and accountable delivery by Yazeed Hasan.",
+  keywords: ["Enterprise AI", "Machine learning", "Data platforms", "MLOps", "Technical leadership", "AI strategy"],
+  authors: [{ name: "Yazeed Hasan", url: "/" }],
+  creator: "Yazeed Hasan",
+  publisher: "Yazeed Hasan",
+  category: "Technology",
   applicationName: "Yazeed Hasan Portfolio",
   formatDetection: { email: false, address: false, telephone: false },
   icons: { icon: "/icon.svg" },
@@ -45,8 +50,8 @@ export const viewport: Viewport = {
   initialScale: 1,
   colorScheme: "light dark",
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f5f2e9" },
-    { media: "(prefers-color-scheme: dark)", color: "#171613" },
+    { media: "(prefers-color-scheme: light)", color: "#f6f3eb" },
+    { media: "(prefers-color-scheme: dark)", color: "#1b1a17" },
   ],
 };
 
@@ -80,14 +85,14 @@ const fallbackShell: SiteShell = {
   contact_enabled: false,
   presentation: {
     site_name: "Yazeed Hasan",
-    default_title: "Yazeed Hasan — AI & Data Science",
-    default_description: "AI engineering, data platforms, MLOps, delivery leadership, and owned products by Yazeed Hasan.",
+    default_title: "Yazeed Hasan — AI & Data Technical Leader",
+    default_description: "Enterprise AI/ML, data platforms, MLOps, strategy, technical leadership, and accountable delivery by Yazeed Hasan.",
     locale: "en",
     footer_eyebrow: "Yazeed Hasan / Amman",
-    footer_heading: "Build useful systems. Ship accountable outcomes.",
-    footer_statement: "AI, data, product, and delivery — connected end to end.",
-    about_title: "The person behind the systems.",
-    about_intro: "Personal context, technical strengths, professional interests, and the principles behind the work.",
+    footer_heading: "Align strategy. Build useful systems. Deliver accountable outcomes.",
+    footer_statement: "Enterprise AI, data platforms, MLOps, strategy, and delivery.",
+    about_title: "Leadership, technical depth, and accountable delivery.",
+    about_intro: "A source-backed professional profile consolidated into the homepage.",
     achievements_title: "A record of earned milestones.",
     achievements_intro: "Certifications, awards, professional achievements, academic recognition, and published research.",
     work_title: "Work across roles and operating contexts.",
@@ -101,7 +106,7 @@ const fallbackShell: SiteShell = {
     open_source_title: "Open source",
     open_source_intro: "Public repositories and contribution work.",
     sponsorship_title: "Sponsor a useful idea, project, or public contribution.",
-    sponsorship_description: "Direct sponsorship details are being prepared. Purpose-specific sponsorship inquiries are open now.",
+    sponsorship_description: "Direct support runs through GitHub Sponsors. Purpose-specific sponsorship inquiries are also open.",
     sponsorship_principles: [
       "Scope and purpose are agreed before funds move.",
       "Sponsorship never purchases private access or editorial control.",
@@ -115,8 +120,6 @@ export default async function RootLayout({
 }: Readonly<{ children: ReactNode }>) {
   const result = await loadApi(() => getPublicApi().public.getSiteShell());
   const shell = result.ok ? result.data : fallbackShell;
-  const navigation = [...shell.header_navigation].sort((a, b) => a.order - b.order);
-
   return (
     <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
       <body
@@ -134,9 +137,7 @@ export default async function RootLayout({
             header={
               <SiteHeader
                 brandName={shell.brand_name}
-                brandMark={shell.brand_mark}
-                navigation={navigation}
-                contactEnabled={shell.contact_enabled}
+                brandLogo={shell.brand_logo}
               />
             }
             footer={

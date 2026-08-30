@@ -248,10 +248,9 @@ export const MOTION_VARIANTS = ["none", "reveal", "stagger"] as const;
 export const SECTION_THEMES = ["default", "contrast", "muted", "accent"] as const;
 
 export const PUBLIC_NAV_FALLBACK = [
-  { label: "About", href: "/about" },
-  { label: "Achievements", href: "/achievements" },
   { label: "Work", href: "/work" },
   { label: "Projects", href: "/projects" },
+  { label: "Achievements", href: "/achievements" },
   { label: "Sponsor", href: "/sponsor" },
 ] as const;
 import homepageRegistry from "../../../python/contracts/homepage_sections.json";

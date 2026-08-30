@@ -57,6 +57,8 @@ class RequestContextMiddleware(BaseHTTPMiddleware):
             if response is not None:
                 response.headers["X-Request-ID"] = request_id
             reset_request_id(token)
+
+
 class SecurityHeadersMiddleware(BaseHTTPMiddleware):
     def __init__(
         self,

@@ -41,8 +41,8 @@ class EngagementDiscoveryProvider:
                     title="Sponsor",
                     description=(
                         description
-                        or "Direct sponsorship details are being prepared; "
-                        "purpose-specific sponsorship inquiries are open."
+                        or "GitHub Sponsors provides the direct support path; "
+                        "purpose-specific sponsorship inquiries are also open."
                     ),
                     breadcrumbs=(DiscoveryBreadcrumb(label="Sponsor", path="/sponsor"),),
                 )

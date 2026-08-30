@@ -13,6 +13,7 @@ const discoveryPage: DiscoveryPage = {
     description: "Canonical discovery description.",
     canonical_url: "https://portfolio.example/projects/reviewed",
     robots: "index, follow",
+    keywords: ["Enterprise AI", "MLOps"],
     open_graph: {
       type: "article",
       site_name: "Portfolio",
@@ -44,6 +45,7 @@ describe("discovery metadata", () => {
       googleBot: "index, follow",
     });
     expect(metadata.title).toEqual({ absolute: "Reviewed project" });
+    expect(metadata.keywords).toEqual(["Enterprise AI", "MLOps"]);
     expect(metadata.openGraph).toEqual(
       expect.objectContaining({
         type: "article",

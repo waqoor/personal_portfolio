@@ -448,7 +448,7 @@ export function mapProfile(
 ) {
   const portraits = value.portraits
     .filter((item) => item.is_active)
-    .sort((a, b) => a.sort_order - b.sort_order);
+    .sort((a, b) => Number(b.is_primary) - Number(a.is_primary) || a.sort_order - b.sort_order);
   const status =
     value.availability_status === "available" ||
     value.availability_status === "unavailable"
@@ -1054,6 +1054,7 @@ export function mapHomePage(
 
 export function mapSiteShell(homepage: z.infer<typeof rawSiteShellSchema>) {
   const enabled = homepage.features.assistant ?? false;
+  const profile = homepage.profile ? mapProfile(homepage.profile, null) : undefined;
   const defaults = {
     enabled,
     greeting: "Ask about published projects, experience, skills, and writing.",
@@ -1074,6 +1075,7 @@ export function mapSiteShell(homepage: z.infer<typeof rawSiteShellSchema>) {
   const assistantSettings = configured.success ? configured.data : defaults;
   return siteShellSchema.parse({
     brand_name: homepage.site_presentation.site_name,
+    brand_logo: profile?.portrait,
     header_navigation: homepage.navigation
       .filter((item) => item.location === "header")
       .sort((a, b) => a.sort_order - b.sort_order)
@@ -1096,9 +1098,7 @@ export function mapSiteShell(homepage: z.infer<typeof rawSiteShellSchema>) {
         order: item.sort_order,
         location: item.location,
       })),
-    socials: homepage.profile
-      ? mapProfile(homepage.profile, null).socials
-      : [],
+    socials: profile?.socials ?? [],
     assistant_enabled: enabled,
     assistant_settings: assistantSettings,
     contact_enabled: homepage.features.contact ?? false,
@@ -1122,9 +1122,9 @@ export function mapProfilePage(
     education: education.map(mapEducation),
     certifications: certifications.map(mapCertification),
     seo: {
-      title: `About ${profile.full_name}`,
+      title: `${profile.full_name} — ${profile.headline}`,
       description: profile.short_bio,
-      canonical_url: "/about",
+      canonical_url: "/",
       noindex: profile.noindex,
     },
   });

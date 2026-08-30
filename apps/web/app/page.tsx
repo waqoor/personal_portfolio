@@ -8,7 +8,10 @@ import { discoveryMetadata } from "@/lib/metadata";
 export const dynamic = "force-dynamic";
 
 export async function generateMetadata(): Promise<Metadata> {
-  return discoveryMetadata("/", { title: "Portfolio", description: "Selected work, experience, writing, and collaboration." });
+  return discoveryMetadata("/", {
+    title: "Yazeed Hasan — AI & Data Technical Leader",
+    description: "Enterprise AI/ML, data platforms, MLOps, strategy, technical leadership, and accountable delivery by Yazeed Hasan.",
+  });
 }
 
 export default async function HomePage() {
