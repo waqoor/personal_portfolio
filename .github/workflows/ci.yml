@@ -82,7 +82,7 @@ jobs:
       NEXT_PUBLIC_API_BASE_URL: /api/v1
     steps:
       - uses: actions/checkout@v7
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@v7
         with:
           node-version: "24"
           cache: npm
@@ -118,7 +118,7 @@ jobs:
       PORTFOLIO_ADMIN_PASSWORD: Ci-E2e-Owner-2026!
     steps:
       - uses: actions/checkout@v7
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@v7
         with:
           node-version: "24"
           cache: npm
