@@ -12,7 +12,7 @@
   "dependencies": {
     "@react-three/fiber": "9.7.0",
     "gsap": "3.15.0",
-    "motion": "13.1.1",
+    "motion": "13.3.0",
     "three": "0.182.0"
   },
   "peerDependencies": {
@@ -20,9 +20,9 @@
     "react-dom": ">=19.0.0"
   },
   "devDependencies": {
-    "@types/react": "^19.2.0",
-    "@types/react-dom": "^19.2.0",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
     "@types/three": "0.182.0",
-    "typescript": "5.9.3"
+    "typescript": "7.0.2"
   }
 }
