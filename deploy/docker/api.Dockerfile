@@ -1,4 +1,4 @@
-FROM python:3.13-slim-bookworm@sha256:c45a22ea000adfd9cda29364bbe7edd23001ce5cc2ad15857cfbf7766943b9ca AS builder
+FROM python:3.15-slim-bookworm@sha256:4e03260adeeebafccd084f3584e6b84823aba5651cfb53ef8a078ed441ddf9cd AS builder
 
 ENV PIP_DISABLE_PIP_VERSION_CHECK=1 \
     PIP_NO_CACHE_DIR=1 \
@@ -17,7 +17,7 @@ RUN python -m venv /opt/portfolio-venv \
     && /opt/portfolio-venv/bin/pip install --no-deps -r requirements.lock \
     && /opt/portfolio-venv/bin/pip install --no-deps .
 
-FROM python:3.13-slim-bookworm@sha256:c45a22ea000adfd9cda29364bbe7edd23001ce5cc2ad15857cfbf7766943b9ca AS runtime
+FROM python:3.15-slim-bookworm@sha256:4e03260adeeebafccd084f3584e6b84823aba5651cfb53ef8a078ed441ddf9cd AS runtime
 
 ENV PATH="/opt/portfolio-venv/bin:${PATH}" \
     PYTHONUNBUFFERED=1 \
